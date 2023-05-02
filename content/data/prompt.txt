@@ -1,0 +1,94 @@
+Given following sections:
+[
+  {
+    "id": 1,
+    "code": "RUB",
+    "title": "Variables",
+    "points": 10,
+    "description": "Learn about variables and their scope in Ruby."
+  },
+  {
+    "id": 2,
+    "code": "RUB",
+    "title": "Control Flow",
+    "points": 10,
+    "description": "Explore loops, conditions and branching statements in Ruby."
+  },
+  {
+    "id": 3,
+    "code": "RUB",
+    "title": "Data Types",
+    "points": 10,
+    "description": "Understand the different data types in Ruby, such as strings, integers, booleans, etc."
+  },
+  {
+    "id": 4,
+    "code": "RUB",
+    "title": "Methods",
+    "points": 10,
+    "description": "Learn how to define and call methods in Ruby."
+  },
+  {
+    "id": 5,
+    "code": "RUB",
+    "title": "Object-Oriented Programming",
+    "points": 10,
+    "description": "Discover the basics of OOP in Ruby, including classes, objects, and inheritance."
+  },
+  {
+    "id": 6,
+    "code": "RUB",
+    "title": "Modules",
+    "points": 10,
+    "description": "Explore how to use modules to organize and reuse code in Ruby."
+  },
+  {
+    "id": 7,
+    "code": "RUB",
+    "title": "Exceptions",
+    "points": 10,
+    "description": "Learn how to handle exceptions in Ruby, including raising and rescuing them."
+  },
+  {
+    "id": 8,
+    "code": "RUB",
+    "title": "Regular Expressions",
+    "points": 10,
+    "description": "Understand how to use regular expressions in Ruby to search and manipulate strings."
+  },
+  {
+    "id": 9,
+    "code": "RUB",
+    "title": "Blocks and Iterators",
+    "points": 10,
+    "description": "Discover how to use blocks and iterators in Ruby to iterate over collections and perform complex operations."
+  },
+  {
+    "id": 10,
+    "code": "RUB",
+    "title": "File I/O",
+    "points": 10,
+    "description": "Learn how to read and write files in Ruby using various methods and techniques."
+  }
+ ]
+*********************************************************
+
+Generate JSON file to populate the Question table in a database with 10 relevant questions about Ruby section 7 continue with id 71 using this format:
+{ 
+  t.integer  "id"
+  t.string   "code"
+  t.integer  "section_id"
+  t.string   "title"
+  t.text     "description"
+  t.string   "option_a"
+  t.string   "option_b"
+  t.string   "option_c"
+  t.string   "option_d"
+  t.string   "correct_answer"
+  t.integer  "points"
+ }
+Every question has 4 options, a,b,c,d and one correct answer. Evaluate dificulty level from 1 to 3 and set the number of points equal to difficulty level. Use code=RUB
+***********************************************************
+
+Continue to generate 10 questions for next section using the same format.
+
