@@ -16,7 +16,7 @@ quiz-app/
 │   │   ├── app.rb
 │   ├── db/
 │   │   ├── migrate/
-│   │   │   ├── 001_create_questions.rb
+│   │   │   ├── ruby_quiz.rb
 │   │   ├── schema.rb
 │   ├── config/
 │   │   ├── database.yml
