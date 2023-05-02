@@ -2,13 +2,14 @@
 
 Website Quiz app for our website. 
 
-## Tech Stack:
+Tech stack: Svelte, MariaDB, and Rails:
 
-We are not sure but we will try to use:
+* [Svelte](https://svelte.dev/)
+* [Rails](https://rubyonrails.org/)
+* [MariaDB](https://mariadb.org/)
 
-* Vue
-* NodeJS
-* MariaDB
+These links will take you directly to the homepage of each technology where you can learn more about them, their features, and how they can be used to develop amazing applications.
+
 
 [hosted here](https://ask.sagecode.net)
 
