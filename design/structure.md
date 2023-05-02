@@ -1,44 +1,80 @@
 ## Structure
 
-Sure, here is a sample project structure that you can use as a starting point for creating a Quiz app using Svelte, MariaDB, and Rails:
+ Folder structure for a project that has Website index page, Svelte front-end and Ruby on Rails back-end with Ruby scripts for MariaDB database structure and JSON Initialization content with JSON ruby scripts that load the content. Use Unicode tree to show the structure.
 
 ```
-quiz-app/
 ├── backend/
 │   ├── app/
 │   │   ├── controllers/
-│   │   │   ├── api/
-│   │   │   │   ├── questions_controller.rb
+│   │   │   └── pages_controller.rb
 │   │   ├── models/
-│   │   │   ├── question.rb
 │   │   ├── views/
-│   │   ├── helpers.rb
-│   │   ├── app.rb
-│   ├── db/
-│   │   ├── migrate/
-│   │   │   ├── ruby_quiz.rb
-│   │   ├── schema.rb
-│   ├── config/
-│   │   ├── database.yml
-│   ├── public/
-│   ├── Gemfile
-│   ├── Gemfile.lock
+│   │   │   ├── layouts/
+│   │   │   │   └── application.html.erb
+│   │   │   └── pages/
+│   │   │       └── index.html.erb
+│   │   ├── config/
+│   │   │   ├── database.yml
+│   │   │   └── routes.rb
+│   │   ├── db/
+│   │   │   ├── mariadb/
+│   │   │   │   └── scripts/
+│   │   │   │       ├── create_database.rb
+│   │   │   │       ├── create_tables.rb
+│   │   │   │       ├── insert_data.rb
+│   │   │   │       ├── load_data.rb
+│   │   │   │       └── ...
+│   │   ├── Gemfile
+│   │   ├── Gemfile.lock
+│   │   ├── Rakefile
+│   │   └── ...
+│   └── README.md
 ├── frontend/
 │   ├── public/
+│   │   └── index.html
 │   ├── src/
-│   │   ├── components/
-│   │   │   ├── Quiz.svelte
-│   │   ├── routes/
-│   │   ├── main.js
+│   │   ├── App.svelte
+│   │   └── ...
 │   ├── package.json
-│   ├── rollup.config.js
-├── docker-compose.yml
+│   └── rollup.config.js
+├── content/
+│   ├── data/
+│   ├── init_database.rb
+│   └── load_data.rb
+├── README.md
+└── index.html
 ```
 
-In this structure, the backend of the Quiz app is written in Rails, while the frontend is built with Svelte. MariaDB is used as the database to store the questions.
+## Description
 
-- The `backend/` directory contains the entire Rails application, including the controllers, models, views, and helpers needed to build the API endpoints required for the Quiz app. Additionally, it contains the `db/` directory, which contains the database schema and migration files for MariaDB, as well as the `config/` directory with the database configuration file `database.yml`.
-- The `frontend/` directory contains the Svelte application code that will fetch the questions from the Rails backend API and render them in the Quiz component. It includes a `src/` directory with the Svelte components and routes, as well as a `public/` directory with static files.
-- In the `docker-compose.yml` file, you can define the services for MariaDB and Rails to spin up the containers.
+Here's an overview of the folders and components in the folder structure:
 
-This is just a basic structure, and you may modify it according to your specific requirements.
+- `backend/`: This is the root directory for the Ruby on Rails back-end code.
+  - `app/`: This directory contains the main Rails application code.
+    - `controllers/`: This directory contains the controllers that handle requests and responses for the application.
+    - `models/`: This directory contains the models that represent the application's data and logic.
+    - `views/`: This directory contains the views that render the HTML templates for the application.
+      - `layouts/`: This directory contains the layout templates that are used to wrap the content of other templates.
+      - `pages/`: This directory contains the view templates for the application's pages.
+    - `config/`: This directory contains configuration files for the application, such as `database.yml` for MariaDB database configuration and `routes.rb` for defining the application's routes.
+    - `db/`: This directory contains the database related code and scripts.
+      - `mariadb/`: This directory contains scripts to create the database, tables, load and insert data into the MariaDB database.
+      - `seeds.rb`: This file contains the code for seeding the database through ActiveRecord.
+    - `Gemfile`: This file lists the Ruby gems required by the application.
+    - `Gemfile.lock`: This file pins the exact versions of the gems and their dependencies.
+    - `Rakefile`: This file contains the Rake tasks to manage the application.
+  - `README.md`: This file contains information about the back-end code.
+
+- `frontend/`: This directory contains the Svelte front-end code.
+  - `public/`: This directory contains the static files and the `index.html` file.
+  - `src/`: This directory contains the Svelte components and the `App.svelte` file.
+  - `package.json`: This file lists the dependencies and specifies the build script for the front-end.
+  - `rollup.config.js`: This file is the configuration file for Rollup, the module bundler used by Svelte.
+
+- `content/`: This directory contains the Ruby scripts for initializing the database and loading data into the MariaDB database. It has a subfolder `data` that contains the questions. Each json file is one quiz.
+
+- `README.md`: This file serves as the main README file for the project.
+
+- `index.html`: This file is the main HTML file for the project, it can be used to redirect to the actual app or to display a static page.
+
+I hope this gives you a good understanding of the different components in the project's folder structure!
