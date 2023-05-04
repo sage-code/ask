@@ -39,7 +39,8 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
 </div>
 
 <h2>Quiz App Tables</h2>
-<p>Here's a list of tables in the quiz app:</p>
+
+<p>Here's a list of all tables required for the quiz app:</p>
 
 <table class="table table-bordered table-striped table-dark">
   <thead>
@@ -54,49 +55,50 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
      <tr>
       <td>Users</td>
       <td>Contains metadata about the registered users of the quiz app.</td>
-      <td>user_id</td>
+      <td>id</td>
       <td>N/A</td>
     </tr>
     <tr>
       <td>Quizzes</td>
       <td>Contains metadata about each quiz that is available to users.</td>
-      <td>quiz_id</td>
+      <td>code</td>
       <td>N/A</td>
     </tr>   
     <tr>
       <td>Sections</td>
-      <td>Holds the metadata about the different sections where each section corresponds to a particular category or subject within the quiz.</td>
-      <td>section_id</td>
+      <td>Holds the metadata about the different topics within the quiz.</td>
+      <td>id</td>
       <td>code</td>
     </tr>
     <tr>
       <td>Questions</td>
-      <td>Stores the different questions that belong to each section within the quiz.</td>
-      <td>question_id</td>
+      <td>Stores the questions that belong to each section.</td>
+      <td>id</td>
       <td>section_id</td>
     </tr>
     <tr>
       <td>Options</td>
       <td>Stores the different possible answers for each question.</td>
-      <td>option_id</td>
+      <td>id</td>
       <td>question_id</td>
     </tr>
     <tr>
       <td>Attempts</td>
       <td>Stores the metadata about each quiz-taker's attempt.</td>
-      <td>attempt_id</td>
+      <td>id</td>
       <td>quiz_id, user_id</td>
     </tr>
     <tr>
       <td>Answers</td>
-      <td>Stores the answered question rows submitted by the quiz-taker.</td>
-      <td>answer_id</td>
+      <td>Stores the answered questions submitted by the quiz-taker.</td>
+      <td>N/A</td>
       <td>quiz_id, user_id, question_id</td>
     </tr>
   </tbody>
 </table>
 
 <h2>Users Table</h2>
+
 <table class="table table-bordered table-striped table-dark">
 <thead>
   <tr>
@@ -117,28 +119,28 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
   </tr>
   <tr>
     <td>twitter</td>
-    <td>VARCHAR</td>
+    <td>VARCHAR(50)</td>
     <td>The user's twitter username.</td>
     <td>No</td>
     <td>No</td>
   </tr>
   <tr>
     <td>discord</td>
-    <td>VARCHAR</td>
-    <td>The user's discord usernam.</td>
+    <td>VARCHAR(50)</td>
+    <td>The user's discord username.</td>
     <td>No</td>
     <td>No</td>
   </tr>
   <tr>
     <td>password</td>
-    <td>VARCHAR</td>
+    <td>VARCHAR(255)</td>
     <td>The user's password.</td>
     <td>No</td>
     <td>No</td>
   </tr>
   <tr>
     <td>created_date</td>
-    <td>DATETIME</td>
+    <td>TIMESTAMP</td>
     <td>The date the user account was created.</td>
     <td>No</td>
     <td>No</td>
@@ -154,6 +156,7 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
 </table>
 
 <h2>Quizzes Table</h2>
+
 <table class="table table-bordered table-striped table-dark">
 <thead>
   <tr>
@@ -174,14 +177,14 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
   </tr>
   <tr>
     <td>name</td>
-    <td>VARCHAR</td>
+    <td>VARCHAR(255)</td>
     <td>The name of the quiz.</td>
     <td>No</td>
     <td>No</td>
   </tr>
   <tr>
     <td>description</td>
-    <td>VARCHAR</td>
+    <td>VARCHAR(255)</td>
     <td>A brief description of the quiz.</td>
     <td>No</td>
     <td>No</td>
@@ -225,6 +228,7 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
 </table>
 
 <h2>Sections Table</h2>
+
 <table class="table table-bordered table-striped table-dark">
 <thead>
   <tr>
@@ -248,11 +252,11 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
     <td>CHAR(3)</td>
     <td>Quiz code for this section.</td>
     <td>No</td>
-    <td>Yes</td>
+    <td>Yes, references quizzes.code</td>
   </tr> 
   <tr>
     <td>name</td>
-    <td>VARCHAR</td>
+    <td>VARCHAR(255)</td>
     <td>Name of the section.</td>
     <td>No</td>
     <td>No</td>
@@ -268,13 +272,15 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
 </table>
 
 <h2>Questions Table</h2>
+
 <table class="table table-bordered table-striped table-dark">
 <thead>
   <tr>
     <th>Name</th>
     <th>Data Type</th>
     <th>Description</th>
-    <th>Primary Key</th>    
+    <th>Primary Key</th>
+    <th>Foreign Key</th>
   </tr>
 </thead>
 <tbody>
@@ -297,19 +303,12 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
     <td>CHAR(3)</td>
     <td>Quiz code for this question.</td>
     <td>No</td>
-    <td>Yes</td>
+    <td>Yes, references quizzes.code</td>
   </tr>  
   <tr>
     <td>text</td>
-    <td>VARCHAR</td>
+    <td>VARCHAR(255)</td>
     <td>The text of the question.</td>
-    <td>No</td>
-    <td>No</td>
-  </tr>
-  <tr>
-    <td>correct</td>
-    <td>CHAR(4)</td>
-    <td>The correct answers. abcd</td>
     <td>No</td>
     <td>No</td>
   </tr>
@@ -324,6 +323,7 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
 </table>
 
 <h2>Options Table</h2>
+
 <table class="table table-bordered table-striped table-dark">
 <thead>
   <tr>
@@ -336,8 +336,8 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
 </thead>
 <tbody>
   <tr>
-    <td>choice</td>
-    <td>CHAR(1)</td>
+    <td>id</td>
+    <td>INT</td>
     <td>Unique identifier for each question (a,b,c,d)</td>
     <td>Yes</td>
     <td>No</td>
@@ -351,7 +351,7 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
   </tr>
   <tr>
     <td>text</td>
-    <td>VARCHAR</td>
+    <td>VARCHAR(255)</td>
     <td>The text of the poll option.</td>
     <td>No</td>
     <td>No</td>
@@ -367,6 +367,7 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
 </table>
 
 <h2>Attempts Table</h2>
+
 <table class="table table-bordered table-striped table-dark">
 <thead>
   <tr>
@@ -377,11 +378,11 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
     <th>Foreign Key</th>
   </tr>
 </thead>
-<tbody>
+<tbody>  
   <tr>
     <td>id</td>
     <td>INT</td>
-    <td>Unique identifier for each attempt in the quiz.</td>
+    <td>The unique identifier for the attempt.</td>
     <td>Yes</td>
     <td>No</td>
   </tr>
@@ -390,7 +391,7 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
     <td>INT</td>
     <td>The quiz attempted.</td>
     <td>No</td>
-    <td>Yes, references quizzes.id</td>
+    <td>Yes, references quizzes.code</td>
   </tr>
   <tr>
     <td>user_id</td>
@@ -415,7 +416,7 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
   </tr>
   <tr>
     <td>score</td>
-    <td>DECIMAL</td>
+    <td>DECIMAL(5,2)</td>
     <td>The score achieved in the attempt.</td>
     <td>No</td>
     <td>No</td>
@@ -424,161 +425,175 @@ Database structure required for Quiz app. Quiz questions are organized in sectio
 </table>
 
 <h2>Answers Table</h2>
+
 <table class="table table-bordered table-striped table-dark">
-<thead>
-  <tr>
-    <th>Name</th>
-    <th>Data Type</th>
-    <th>Description</th>
-    <th>Primary Key</th>
-    <th>Foreign Key</th>
-  </tr>
-</thead>
-<tbody>  
-  <tr>
-    <td>quiz_id</td>
-    <td>INT</td>
-    <td>The quiz completed.</td>
-    <td>No</td>
-    <td>Yes, references quizzes.id</td>
-  </tr>
-  <tr>
-    <td>user_id</td>
-    <td>INT</td>
-    <td>The user who completed the quiz.</td>
-    <td>No</td>
-    <td>Yes, references users.id</td>
-  </tr>
-  <tr>
-    <td>question_id</td>
-    <td>INT</td>
-    <td>The question that was answered.</td>
-    <td>No</td>
-    <td>Yes, references questions.id</td>
-  </tr>
-  <tr>
-    <td>answers</td>
-    <td>CHAR(4)</td>
-    <td>The correct answers. abcd</td>
-    <td>No</td>
-    <td>No</td>
-  </tr>
-  <tr>
-    <td>is_correct</td>
-    <td>BOOLEAN</td>
-    <td>Indicates whether the submitted answer is correct.</td>
-    <td>No</td>
-    <td>No</td>
-  </tr> 
-  <tr>
-    <td>points</td>
-    <td>INT</td>
-    <td>number of points granted for this response</td>
-    <td>No</td>
-    <td>No</td>
-  </tr>  
-</tbody>
+  <thead>
+    <tr>
+      <th>Column Name</th>
+      <th>Data Type</th>
+      <th>Description</th>
+      <th>Foreign Key</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>question_id</td>
+      <td>INT</td>
+      <td>The related question. </code>.</td>
+      <td>Questions.id</td>
+    </tr>
+    <tr>
+      <td>user_id</td>
+      <td>INT</td>
+      <td>The user who answered the question.</td>
+      <td>Users.id</td>
+    </tr>
+    <tr>
+      <td>option_id</td>
+      <td>INT</td>
+      <td>The chosen option for the question.</td>
+      <td>Options.id</td>
+    </tr>
+    <tr>
+      <td>quiz_id</td>
+      <td>INT</td>
+      <td>The related quiz.</td>
+      <td>Quizzes.id</td>
+    </tr>
+  </tbody>
 </table>
 
 <h2>MariaDB Data Types</h2>
+
 <p>MariaDB supports a range of data types that can be used to store and manipulate data in your database.</p>
 
 <table border="2" class="table table-bordered table-striped table-dark">
-<thead>
-  <tr>
-    <th>Data Type</th>
-    <th>Description</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>BOOL</td>
-    <td>A boolean value that can be either true or false</td>
-  </tr>
-  <tr>
-    <td>BIT</td>
-    <td>A bit-field type that can store up to 64 bits</td>
-  </tr>
-  <tr>
-    <td>TINYINT</td>
-    <td>A small integer that can store values from -128 to 127</td>
-  </tr>
-  <tr>
-    <td>SMALLINT</td>
-    <td>A medium-sized integer that can store values from -32768 to 32767</td>
-  </tr>
-  <tr>
-    <td>MEDIUMINT</td>
-    <td>A larger integer that can store values from -8388608 to 8388607</td>
-  </tr>
-  <tr>
-    <td>INT</td>
-    <td>A standard integer that can store values from -2147483648 to 2147483647</td>
-  </tr>
-  <tr>
-    <td>BIGINT</td>
-    <td>A large integer that can store values from -9223372036854775808 to 9223372036854775807</td>
-  </tr>
-  <tr>
-    <td>FLOAT</td>
-    <td>A single-precision floating-point number</td>
-  </tr>
-  <tr>
-    <td>DOUBLE</td>
-    <td>A double-precision floating-point number</td>
-  </tr>
-  <tr>
-    <td>DECIMAL</td>
-    <td>A fixed-point number with a specified precision and scale</td>
-  </tr>
-  <tr>
-    <td>DATE</td>
-    <td>A date value in the format YYYY-MM-DD</td>
-  </tr>
-  <tr>
-    <td>TIME</td>
-    <td>A time value in the format HH:MM:SS</td>
-  </tr>
-  <tr>
-    <td>DATETIME</td>
-    <td>A date and time value in the format YYYY-MM-DD HH:MM:SS</td>
-  </tr>
-  <tr>
-    <td>TIMESTAMP</td>
-    <td>A UNIX timestamp value stored in UTC</td>
-  </tr>
-  <tr>
-    <td>YEAR</td>
-    <td>A year value in the format YYYY or YY</td>
-  </tr>
-  <tr>
-    <td>CHAR</td>
-    <td>A fixed-length string with a specified length</td>
-  </tr>
-  <tr>
-    <td>VARCHAR</td>
-    <td>A variable-length string with a maximum length of 65535 characters</td>
-  </tr>
-  <tr>
-    <td>TINYBLOB</td>
-    <td>A small binary object with a maximum length of 255 bytes</td>
-  </tr>
-  <tr>
-    <td>BLOB</td>
-    <td>A binary object with a maximum length of 65535 bytes</td>
-  </tr>
-  <tr>
-    <td>MEDIUMBLOB</td>
-    <td>A larger binary object with a maximum length of 16777215 bytes</td>
-  </tr>
-  <tr>
-    <td>LONGBLOB</td>
-    <td>A very large binary object with a maximum length of 4294967295 bytes</td>
-  </tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Data Type</th>
+      <th>Description</th>
+      <th>Min</th>
+      <th>Max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BOOL</td>
+      <td>A boolean value that can be either true or false</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>BIT</td>
+      <td>A bit-field type that can store up to 64 bits</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>TINYINT</td>
+      <td>A small integer</td>
+      <td>-128</td>
+      <td>127</td>
+    </tr>
+    <tr>
+      <td>SMALLINT</td>
+      <td>A medium-sized integer</td>
+      <td>-32768</td>
+      <td>32767</td>
+    </tr>
+    <tr>
+      <td>MEDIUMINT</td>
+      <td>A larger integer</td>
+      <td>-8388608</td>
+      <td>8388607</td>
+    </tr>
+    <tr>
+      <td>INT</td>
+      <td>A standard integer</td>
+      <td>-2147483648</td>
+      <td>2147483647</td>
+    </tr>
+    <tr>
+      <td>BIGINT</td>
+      <td>A large integer</td>
+      <td>-9223372036854775808</td>
+      <td>9223372036854775807</td>
+    </tr>
+    <tr>
+      <td>FLOAT</td>
+      <td>A single-precision floating-point number</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>DOUBLE</td>
+      <td>A double-precision floating-point number</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>DECIMAL</td>
+      <td>A fixed-point number with a specified precision and scale</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>DATE</td>
+      <td>A date value in the format YYYY-MM-DD</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>TIME</td>
+      <td>A time value in the format HH:MM:SS</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>DATETIME</td>
+      <td>A date and time value in the format YYYY-MM-DD HH:MM:SS</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>TIMESTAMP</td>
+      <td>A UNIX timestamp value stored in UTC</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>YEAR</td>
+      <td>A year value in the format YYYY or YY</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CHAR</td>
+      <td>A fixed-length string with a specified length</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>VARCHAR</td>
+      <td>A variable-length string with a maximum length of 65,535 characters</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>TINYBLOB</td>
+      <td>A small binary object with a maximum length of 255 bytes</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>BLOB</td>
+      <td>A binary object with a maximum length of 65,535 bytes</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 
-<hr>
 <p><b>Read next:</b>
 <a href="index.html">Index</a></p>
 
