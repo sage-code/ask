@@ -73,7 +73,7 @@ Given following sections:
  ]
 *********************************************************
 
-Generate JSON file to populate the Question table in a database with 10 relevant questions about Ruby section 7 continue with id 71 using this format:
+Generate JSON file to populate the Question table and option table for section
 { 
   t.integer  "id"
   t.string   "code"

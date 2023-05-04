@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark"><head>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduction to Maj language.">
+  <meta name="author" content="Elucian Moise">
+  <meta name="keywords" content="sage, code, maj, akara, grammar, auxiliary, language, conlang">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Website title -->
+  <title>Ask Architecture</title>  
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <!-- Icon -->
+  <link rel="icon" type="image/png"  href="../images/favicon.ico">  
+  <!-- Prism Highlighter -->
+  <link rel="stylesheet" href="../prism.css">
+  <!-- custom css -->
+  <link rel="stylesheet" href="../sage.css">
+  </head>
+<body>
+
+<div class="container">
+        
+<!-- header -->
+<div class="row">
+    <div class="col">
+        <a href="https://sagecode.net"><img src="../images/sage-logo.svg" alt="Sage-Code Laboratory" height="80"/></a>
+    </div>  
+    <div class="col  bottom-right">
+        <a href="index.html#lang-index" rel="nofollow">index</a>&lt;--
+    </div>
+</div><hr>
+
+<h1>Ask Architecture</h1>
+
+<div class="alert alert-secondary shadow-sm">
+We use KISS and Separation of Concern principles to create architecture for our quiz app. We consider this app will have many customers and users. We have used AI to create this architecture. Our goal is to create high quality, responsive, secure and modern web app.
+</div>
+
+<section>
+<h2>Solution</h2>
+  <p>HTML can be used as the markup language to structure and display the content of the Quiz web app. In this architecture, the KISS (Keep It Simple, Stupid) and Separation of Concern principles can be applied to the different components used. Here's how:</p>
+
+<h3>Svelte</h3>
+  <p>Svelte can be used for the front-end development of the Quiz web app, as it is a lightweight and easy-to-learn framework that allows a simple approach to building user interface components. KISS principle can applied here by following simple and easy-to-understand code structure while building components in Svelte. Separation of Concern principle can be followed by separating the logic and markup of the components, so that each component can have a clear purpose and code can be scaled without affecting the complexity of the entire app.</p>
+
+<h3>Node.js</h3>
+  <p>Node.js can be used as the back-end development environment, allowing us to write server-side code using JavaScript. Using KISS, we can keep the code simple by applying best practices like keeping function length small, avoiding callback hell, and using modular code. Separation of Concern principle can be applied by separating the concerns of different parts of the application; creating separate modules for handling database interactions, user authentication, and server-side rendering.</p>
+
+<h3>Adonis</h3>
+  <p>AdonisJS can be used as the web framework for building server-side applications with Node.js. The Separation of Concern principle can be applied by dividing the application into separate modules, which can handle separate concerns of the application like database communication, websockets, email sending etc. KISS principle can be applied by making sure that each module has a clear purpose and is easy to understand.</p>
+
+<h3>MariaDB</h3>
+  <p>MariaDB can be used as the database for the Quiz web app, storing the JSON data for quiz questions. The Separation of Concern principle can be applied by using a clear schema design, separating tables with different concerns and creating indexes to improve the speed of data retrieval. KISS principle can be applied by ensuring that the schema is easy to understand and follow while maintaining high-normalization to avoid complexity.</p>
+
+<h3>JSON data files</h3>
+  <p>The JSON data files can be used to store the quiz questions, and the Separation of Concern principle can be applied by separating data into different files or tables based on their concerns. The KISS principle can be applied by following a consistent structure across data files. JSON data files can be stored on a version control system for easy access and maintenance. Data files will be split into multiple files. One file/quiz.</p>
+
+</section>
+<hr>
+<section>
+<h2>Quality</h2>
+
+<h3>Performance</h3>
+  <p>In terms of performance, this architecture can deliver responsive and fast UI results, as Svelte is a lightweight framework that compiles the components to run efficiently on the client-side. Node.js, AdonisJS and MariaDB stack can be optimized for performance by caching database queries, using compression, minification, and server-side rendering.</p>
+
+<h3>Maintainability</h3>
+  <p>Regarding maintainability, this architecture has a clear separation of concerns between front-end and back-end, which makes it easier to maintain different parts of the application. Additionally, using AdonisJS with Node.js provides routing, middleware, and reusable logic, which reduces duplications and improves the maintainability of the codebase.</p>
+
+<h3>Usability</h3>
+  <p>In terms of usability, the Quiz web app built with this architecture can be easy to use, even for non-technical users, as the Svelte components provide an intuitive and responsive interface, and AdonisJS provides server-side rendering, which enables fast page loads and smoother navigation.</p>
+
+<h3>Complexity</h3>
+  <p>Regarding complexity, the use of different technologies might seem complex to users with no technical knowledge, but with proper documentation and structure, this architecture can be easy to use and maintain. It is beneficial in the long term, as it allows for more complex functionality to be added seamlessly and effectively.</p>
+</section>
+<hr>
+<section>
+  <h2>References</h2>
+  <ul>
+    <li><a href="https://svelte.dev/docs" target="_blank">Svelte documentation</a></li>
+    <li><a href="https://docs.adonisjs.com/" target="_blank">AdonisJS documentation</a></li>
+    <li><a href="https://nodejs.org/en/docs/" target="_blank">Node.js documentation</a></li>
+    <li><a href="https://mariadb.com/docs/" target="_blank">MariaDB documentation</a></li>
+    <li><a href="https://www.essentialsql.com/get-ready-to-learn-sql-database-normalization-explained-in-simple-english/" target="_blank">Database normalization explained in plain English</a></li>
+    <li><a href="https://blog.risingstack.com/node-js-best-practices-2019/" target="_blank">Best practices for Node.js development</a></li>
+    <li><a href="https://www.netlify.com/blog/2020/06/16/getting-started-with-svelte-3/" target="_blank">Svelte beginner tutorial by Netlify</a></li>
+    <li><a href="https://www.taniarascia.com/node-express-postgresql-heroku/" target="_blank">AdonisJS beginner tutorial by Tania Rascia</a></li>
+    <li><a href="https://scotch.io/@codediger/building-a-scalable-nodejs-app-with-adonisjs-bookshelfjs" target="_blank">Building scalable Node.js app with AdonisJS and Bookshelf.js</a></li>
+    <li><a href="https://www.sitepoint.com/node-js-mysql/" target="_blank">Node.js + MariaDB tutorial by SitePoint</a></li>
+    <li><a href="https://www.smashingmagazine.com/2018/01/understanding-using-restful-apis/" target="_blank">Introduction to RESTful APIs</a></li>
+  </ul>
+</section>
+<hr>
+<section>
+<h2>Conclusion</h2>
+<p>
+Based on the technologies used and best practices implemented, the proposed architecture for the Quiz Web App is a sound one that can meet the requirements of a scalable, performant, and secure web application. Svelte as the frontend framework provides a lightweight and reactive interface, while AdonisJS on the server-side provides a modular, secure, and performant middleware-based system that integrates with MariaDB as the RDBMS. 
+</p>
+<p>Moreover, deploying the Quiz Web App on shared hosting plans can make the app host more cost-effectively, as shared hosting reduces the overhead of server and infrastructural expenses. AdonisJS can be deployed easily to various hosting services such as Cloudways, Heroku, or DigitalOcean, with pricing plans that cater to different needs for RAM, CPU, storage, and bandwidth capacity. Similarly, MariaDB is open-source and can be installed on various platforms for free, making it an affordable option for the database layer of the Quiz Web App.</p>
+
+<p>In summary, the proposed Quiz Web App architecture is not only feature-rich but also efficient and cost-effective in terms of hosting it on a shared hosting plan.</p>
+</section>
+
+<hr>
+<p><b>Read next:</b>
+<a href="resource.html">Resource</a></p>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-copyright text-center"></div>
+</footer>
+</div>
+</body>
+</html>
