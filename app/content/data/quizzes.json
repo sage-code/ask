@@ -1,0 +1,44 @@
+[
+  {
+    "code": "RUB",
+    "title": "Ruby Quiz",
+    "description": "Test your knowledge of the Ruby programming language.",
+    "total_points": 100
+  },
+  {
+    "code": "JAV",
+    "title": "Java Quiz",
+    "description": "Test your knowledge of the Java programming language.",
+    "total_points": 100
+  },
+  {
+    "code": "JUL",
+    "title": "Julia Quiz",
+    "description": "Test your knowledge of the Julia programming language.",
+    "total_points": 100
+  },
+  {
+    "code": "PYT",
+    "title": "Python Quiz",
+    "description": "Test your knowledge of the Python programming language.",
+    "total_points": 100
+  },
+  {
+    "code": "GO",
+    "title": "Go Quiz",
+    "description": "Test your knowledge of the Go programming language.",
+    "total_points": 100
+  },
+  {
+    "code": "RUS",
+    "title": "Rust Quiz",
+    "description": "Test your knowledge of the Rust programming language.",
+    "total_points": 100
+  },
+  {
+    "code": "JS",
+    "title": "JavaScript Quiz",
+    "description": "Test your knowledge of the JavaScript programming language.",
+    "total_points": 100
+  }
+]

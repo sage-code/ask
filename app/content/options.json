@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "option_text": "10",
+    "is_correct": false,
+    "question_id": 1
+  },
+  {
+    "id": 2,
+    "option_text": "55",
+    "is_correct": false,
+    "question_id": 1
+  },
+  {
+    "id": 3,
+    "option_text": "5 + 5",
+    "is_correct": true,
+    "question_id": 1
+  },
+  {
+    "id": 4,
+    "option_text": "undefined",
+    "is_correct": false,
+    "question_id": 1
+  },
+  {
+    "id": 5,
+    "option_text": "pop()",
+    "is_correct": false,
+    "question_id": 2
+  },
+  {
+    "id": 6,
+    "option_text": "push()",
+    "is_correct": false,
+    "question_id": 2
+  },
+  {
+    "id": 7,
+    "option_text": "slice()",
+    "is_correct": false,
+    "question_id": 2
+  },
+  {
+    "id": 8,
+    "option_text": "sort()",
+    "is_correct": true,
+    "question_id": 2
+  },
+  {
+    "id": 9,
+    "option_text": "A collection of properties",
+    "is_correct": true,
+    "question_id": 3
+  },
+  {
+    "id": 10,
+    "option_text": "An anonymous function",
+    "is_correct": false,
+    "question_id": 3
+  },
+  {
+    "id": 11,
+    "option_text": "An instance of a class",
+    "is_correct": false,
+    "question_id": 3
+  },
+  {
+    "id": 12,
+    "option_text": "A built-in data structure",
+    "is_correct": false,
+    "question_id": 3
+  },
+  {
+    "id": 13,
+    "option_text": "A function that is called after a task is completed",
+    "is_correct": true,
+    "question_id": 4
+  },
+  {
+    "id": 14,
+    "option_text": "A function that is executed immediately",
+    "is_correct": false,
+    "question_id": 4
+  },
+  {
+    "id": 15,
+    "option_text": "A function that is used for error handling",
+    "is_correct": false,
+    "question_id": 4
+  },
+  {
+    "id": 16,
+    "option_text": "A function that has no parameters",
+    "is_correct": false,
+    "question_id": 4
+  },
+  {
+    "id": 17,
+    "option_text": "Document Oriented Model",
+    "is_correct": false,
+    "question_id": 5
+  },
+  {
+    "id": 18,
+    "option_text": "Document Object Manipulation",
+    "is_correct": false,
+    "question_id": 5
+  },
+  {
+    "id": 19,
+    "option_text": "Document Object Model",
+    "is_correct": true,
+    "question_id": 5
+  },
+  {
+    "id": 20,
+    "option_text": "Document Object Mapping",
+    "is_correct": false,
+    "question_id": 5
+  },
+  {
+    "id": 21,
+    "option_text": "A programming language",
+    "is_correct": true,
+    "question_id": 6
+  },
+  {
+    "id": 22,
+    "option_text": "A snake species",
+    "is_correct": false,
+    "question_id": 6
+  },
+  {
+    "id": 23,
+    "option_text": "A framework",
+    "is_correct": false,
+    "question_id": 6
+  },
+  {
+    "id": 24,
+    "option_text": "A database",
+    "is_correct": false,
+    "question_id": 6
+  },
+  {
+    "id": 25,
+    "option_text": "A list is mutable and a tuple is immutable",
+    "is_correct": true,
+    "question_id": 7
+  },
+  {
+    "id": 26,
+    "option_text": "A list is immutable and a tuple is mutable",
+    "is_correct": false,
+    "question_id": 7
+  },
+  {
+    "id": 27,
+    "option_text": "A list and tuple are same",
+    "is_correct": false,
+    "question_id": 7
+  },
+  {
+    "id": 28,
+    "option_text": "A tuple has more functionalities than a list",
+    "is_correct": false,
+    "question_id": 7
+  },
+  {
+    "id": 29,
+    "option_text": "A statement that checks if a condition is true or false",
+    "is_correct": true,
+    "question_id": 8
+  },
+  {
+    "id": 30,
+    "option_text": "A statement that loops through a sequence",
+    "is_correct": false,
+    "question_id": 8
+  },
+  {
+    "id": 31,
+    "option_text": "A statement that defines a function",
+    "is_correct": false,
+    "question_id": 8
+  },
+  {
+    "id": 32,
+    "option_text": "A statement that imports a module",
+    "is_correct": false,
+    "question_id": 8
+  },
+  {
+    "id": 33,
+    "option_text": "A for loop is used for finite iterations and a while loop is used for infinite iterations",
+    "is_correct": false,
+    "question_id": 9
+  },
+  {
+    "id": 34,
+    "option_text": "A while loop is used for finite iterations and a for loop is used for infinite iterations",
+    "is_correct": true,
+    "question_id": 9
+  },
+  {
+    "id": 35,
+    "option_text": "There is no difference",
+    "is_correct": false,
+    "question_id": 9
+  },
+  {
+    "id": 36,
+    "option_text": "A for loop is used for sequential iterations and a while loop is used for parallel iterations",
+    "is_correct": false,
+    "question_id": 9
+  },
+  {
+    "id": 37,
+    "option_text": "A function that is defined without a name",
+    "is_correct": true,
+    "question_id": 10
+  },
+  {
+    "id": 38,
+    "option_text": "A function that takes one or more arguments and returns a result",
+    "is_correct": false,
+    "question_id": 10
+  },
+  {
+    "id": 39,
+    "option_text": "A function that has no parameters",
+    "is_correct": false,
+    "question_id": 10
+  },
+  {
+    "id": 40,
+    "option_text": "A function that returns None",
+    "is_correct": false,
+    "question_id": 10
+  },
+  {
+    "id": 41,
+    "option_text": "A programming language",
+    "is_correct": true,
+    "question_id": 11
+  },
+  {
+    "id": 42,
+    "option_text": "A database",
+    "is_correct": false,
+    "question_id": 11
+  },
+  {
+    "id": 43,
+    "option_text": "A framework",
+    "is_correct": false,
+    "question_id": 11
+  },
+  {
+    "id": 44,
+    "option_text": "An operating system",
+    "is_correct": false,
+    "question_id": 11
+  },
+  {
+    "id": 45,
+    "option_text": "A blueprint for creating objects",
+    "is_correct": true,
+    "question_id": 12
+  },
+  {
+    "id": 46,
+    "option_text": "An anonymous function",
+    "is_correct": false,
+    "question_id": 12
+  },
+  {
+    "id": 47,
+    "option_text": "A collection of properties",
+    "is_correct": false,
+    "question_id": 12
+  },
+  {
+    "id": 48,
+    "option_text": "An instance of an object",
+    "is_correct": false,
+    "question_id": 12
+  },
+  {
+    "id": 49,
+    "option_text": "A way to reuse code and create a new class based on an existing class",
+    "is_correct": true,
+    "question_id": 13
+  },
+  {
+    "id": 50,
+    "option_text": "A way to define a method inside a class",
+    "is_correct": false,
+    "question_id": 13
+  },
+  {
+    "id": 51,
+    "option_text": "A way to define a class inside another class",
+    "is_correct": false,
+    "question_id": 13
+  },
+  {
+    "id": 52,
+    "option_text": "A way to define a constructor inside a class",
+    "is_correct": false,
+    "question_id": 13
+  },
+  {
+    "id": 53,
+    "option_text": "A way to define a method that needs to be implemented by a class",
+    "is_correct": true,
+    "question_id": 14
+  },
+  {
+    "id": 54,
+    "option_text": "A way to instantiate a class",
+    "is_correct": false,
+    "question_id": 14
+  },
+  {
+    "id": 55,
+    "option_text": "A way to define a class inside another class",
+    "is_correct": false,
+    "question_id": 14
+  },
+  {
+    "id": 56,
+    "option_text": "A way to define a public variable inside a class",
+    "is_correct": false,
+    "question_id": 14
+  },
+  {
+    "id": 57,
+    "option_text": "An error that occurs at runtime",
+    "is_correct": true,
+    "question_id": 15
+  },
+  {
+    "id": 58,
+    "option_text": "An error that occurs at compile time",
+    "is_correct": false,
+    "question_id": 15
+  },
+  {
+    "id": 59,
+    "option_text": "A warning message",
+    "is_correct": false,
+    "question_id": 15
+  },
+  {
+    "id": 60,
+    "option_text": "A debugging message",
+    "is_correct": false,
+    "question_id": 15
+  }
+]
