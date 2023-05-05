@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark"><head>
+  <meta charset="utf-8">
+  <meta name="description" content="Quiz app Ask, database design.">
+  <meta name="author" content="Elucian Moise">
+  <meta name="keywords" content="sage, code, ask, sage-code, quiz app">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Website title -->
+  <title>Quiz Database</title>  
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <!-- Icon -->
+  <link rel="icon" type="image/png"  href="https://sagecode.net/images/favicon.ico">  
+  <!-- Prism Highlighter -->
+  <link rel="stylesheet" href="https://sagecode.net/prism.css">
+  <!-- custom css -->
+  <link rel="stylesheet" href="https://sagecode.net/sage.css">
+  </head>
+<body>
+
+<div class="container">
+        
+<!-- header -->
+<div class="row">
+    <div class="col">
+        <a href="https://sagecode.net"><img src="https://sagecode.net/images/sage-logo.svg" alt="Sage-Code Laboratory" height="80"/></a>
+    </div>  
+    <div class="col  bottom-right">
+        <a href="../index.html#lang-index" rel="nofollow">index</a>&lt;--
+    </div>
+</div><hr>
+
+<h1>Quiz Database</h1>
+
+<div class="alert alert-secondary shadow-sm">
+Database structure required for Quiz app. Quiz questions are organized in sections, give each section a alfanumeric code. For each section we should have a total number of points. Each question can have 1 up to 4 possible answers only one correct. Users can take quiz several times.
+</div>
+
+<h2>Quiz App Tables</h2>
+
+<p>Here's a list of all tables required for the quiz app:</p>
+
+<table class="table table-bordered table-striped table-dark">
+  <thead>
+    <tr>
+      <th>Table Name</th>
+      <th>Description</th>
+      <th>Primary Key</th>
+      <th>Foreign Keys</th>
+    </tr>
+  </thead>
+  <tbody>
+     <tr>
+      <td>Users</td>
+      <td>Contains metadata about the registered users of the quiz app.</td>
+      <td>id</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>Quizzes</td>
+      <td>Contains metadata about each quiz that is available to users.</td>
+      <td>code</td>
+      <td>N/A</td>
+    </tr>   
+    <tr>
+      <td>Sections</td>
+      <td>Holds the metadata about the different topics within the quiz.</td>
+      <td>id</td>
+      <td>code</td>
+    </tr>
+    <tr>
+      <td>Questions</td>
+      <td>Stores the questions that belong to each section.</td>
+      <td>id</td>
+      <td>section_id</td>
+    </tr>
+    <tr>
+      <td>Options</td>
+      <td>Stores the different possible answers for each question.</td>
+      <td>id</td>
+      <td>question_id</td>
+    </tr>
+    <tr>
+      <td>Attempts</td>
+      <td>Stores the metadata about each quiz-taker's attempt.</td>
+      <td>id</td>
+      <td>quiz_id, user_id</td>
+    </tr>
+    <tr>
+      <td>Answers</td>
+      <td>Stores the answered questions submitted by the quiz-taker.</td>
+      <td>N/A</td>
+      <td>quiz_id, user_id, question_id</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Users Table</h2>
+
+<table class="table table-bordered table-striped table-dark">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Data Type</th>
+    <th>Description</th>
+    <th>Primary Key</th>
+    <th>Foreign Key</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>id</td>
+    <td>INT</td>
+    <td>Unique identifier for each registered user in the quiz app.</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>twitter</td>
+    <td>VARCHAR(50)</td>
+    <td>The user's twitter username.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>discord</td>
+    <td>VARCHAR(50)</td>
+    <td>The user's discord username.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>password</td>
+    <td>VARCHAR(255)</td>
+    <td>The user's password.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>created_date</td>
+    <td>TIMESTAMP</td>
+    <td>The date the user account was created.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>score</td>
+    <td>INT</td>
+    <td>The total score realized.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>  
+</tbody>
+</table>
+
+<h2>Quizzes Table</h2>
+
+<table class="table table-bordered table-striped table-dark">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Data Type</th>
+    <th>Description</th>
+    <th>Primary Key</th>
+    <th>Foreign Key</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>code</td>
+    <td>CHAR(3)</td>
+    <td>Unique identifier for each quiz that is available to users.</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>VARCHAR(255)</td>
+    <td>The name of the quiz.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>description</td>
+    <td>VARCHAR(255)</td>
+    <td>A brief description of the quiz.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>created_by</td>
+    <td>INT</td>
+    <td>The user who created the quiz.</td>
+    <td>No</td>
+    <td>Yes, references users.id</td>
+  </tr>
+  <tr>
+    <td>created_date</td>
+    <td>DATETIME</td>
+    <td>The date the quiz was created.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>time_limit</td>
+    <td>TIME</td>
+    <td>The amount of time allowed for completing the quiz.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>points</td>
+    <td>INT</td>
+    <td>The total possible number of points</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>  
+  <tr>
+    <td>is_active</td>
+    <td>BOOLEAN</td>
+    <td>Indicates whether the quiz is currently available to users.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+</tbody>
+</table>
+
+<h2>Sections Table</h2>
+
+<table class="table table-bordered table-striped table-dark">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Data Type</th>
+    <th>Description</th>
+    <th>Primary Key</th>
+    <th>Foreign Key</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>id</td>
+    <td>INT</td>
+    <td>Unique identifier for each section in the quiz app.</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>code</td>
+    <td>CHAR(3)</td>
+    <td>Quiz code for this section.</td>
+    <td>No</td>
+    <td>Yes, references quizzes.code</td>
+  </tr> 
+  <tr>
+    <td>name</td>
+    <td>VARCHAR(255)</td>
+    <td>Name of the section.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>order</td>
+    <td>INT</td>
+    <td>Determines the order in which sections are displayed to the quiz-taker.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+</tbody>
+</table>
+
+<h2>Questions Table</h2>
+
+<table class="table table-bordered table-striped table-dark">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Data Type</th>
+    <th>Description</th>
+    <th>Primary Key</th>
+    <th>Foreign Key</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>id</td>
+    <td>INT</td>
+    <td>Unique identifier for each question in the quiz.</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>section_id</td>
+    <td>INT</td>
+    <td>The section to which this question belongs.</td>
+    <td>No</td>
+    <td>Yes, references sections.id</td>
+  </tr>
+   <tr>
+    <td>code</td>
+    <td>CHAR(3)</td>
+    <td>Quiz code for this question.</td>
+    <td>No</td>
+    <td>Yes, references quizzes.code</td>
+  </tr>  
+  <tr>
+    <td>text</td>
+    <td>VARCHAR(255)</td>
+    <td>The text of the question.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>points</td>
+    <td>INT</td>
+    <td>Number of points granted for this question: 1..3</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+</tbody>
+</table>
+
+<h2>Options Table</h2>
+
+<table class="table table-bordered table-striped table-dark">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Data Type</th>
+    <th>Description</th>
+    <th>Primary Key</th>
+    <th>Foreign Key</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>id</td>
+    <td>INT</td>
+    <td>Unique identifier for each question (a,b,c,d)</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>question_id</td>
+    <td>INT</td>
+    <td>The question to which this option belongs.</td>
+    <td>No</td>
+    <td>Yes, references questions.id</td>
+  </tr>
+  <tr>
+    <td>text</td>
+    <td>VARCHAR(255)</td>
+    <td>The text of the poll option.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>is_correct</td>
+    <td>BOOLEAN</td>
+    <td>Indicates whether this option is the correct answer for the associated question.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+</tbody>
+</table>
+
+<h2>Attempts Table</h2>
+
+<table class="table table-bordered table-striped table-dark">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Data Type</th>
+    <th>Description</th>
+    <th>Primary Key</th>
+    <th>Foreign Key</th>
+  </tr>
+</thead>
+<tbody>  
+  <tr>
+    <td>id</td>
+    <td>INT</td>
+    <td>The unique identifier for the attempt.</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>quiz_id</td>
+    <td>INT</td>
+    <td>The quiz attempted.</td>
+    <td>No</td>
+    <td>Yes, references quizzes.code</td>
+  </tr>
+  <tr>
+    <td>user_id</td>
+    <td>INT</td>
+    <td>The user attempting the quiz.</td>
+    <td>No</td>
+    <td>Yes, references users.id</td>
+  </tr>
+  <tr>
+    <td>start_time</td>
+    <td>DATETIME</td>
+    <td>The start time of the attempt.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>end_time</td>
+    <td>DATETIME</td>
+    <td>The end time of the attempt.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>score</td>
+    <td>DECIMAL(5,2)</td>
+    <td>The score achieved in the attempt.</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+</tbody>
+</table>
+
+<h2>Answers Table</h2>
+
+<table class="table table-bordered table-striped table-dark">
+  <thead>
+    <tr>
+      <th>Column Name</th>
+      <th>Data Type</th>
+      <th>Description</th>
+      <th>Foreign Key</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>question_id</td>
+      <td>INT</td>
+      <td>The related question. </code>.</td>
+      <td>Questions.id</td>
+    </tr>
+    <tr>
+      <td>user_id</td>
+      <td>INT</td>
+      <td>The user who answered the question.</td>
+      <td>Users.id</td>
+    </tr>
+    <tr>
+      <td>option_id</td>
+      <td>INT</td>
+      <td>The chosen option for the question.</td>
+      <td>Options.id</td>
+    </tr>
+    <tr>
+      <td>quiz_id</td>
+      <td>INT</td>
+      <td>The related quiz.</td>
+      <td>Quizzes.id</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>MariaDB Data Types</h2>
+
+<p>MariaDB supports a range of data types that can be used to store and manipulate data in your database.</p>
+
+<table border="2" class="table table-bordered table-striped table-dark">
+  <thead>
+    <tr>
+      <th>Data Type</th>
+      <th>Description</th>
+      <th>Min</th>
+      <th>Max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BOOL</td>
+      <td>A boolean value that can be either true or false</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>BIT</td>
+      <td>A bit-field type that can store up to 64 bits</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>TINYINT</td>
+      <td>A small integer</td>
+      <td>-128</td>
+      <td>127</td>
+    </tr>
+    <tr>
+      <td>SMALLINT</td>
+      <td>A medium-sized integer</td>
+      <td>-32768</td>
+      <td>32767</td>
+    </tr>
+    <tr>
+      <td>MEDIUMINT</td>
+      <td>A larger integer</td>
+      <td>-8388608</td>
+      <td>8388607</td>
+    </tr>
+    <tr>
+      <td>INT</td>
+      <td>A standard integer</td>
+      <td>-2147483648</td>
+      <td>2147483647</td>
+    </tr>
+    <tr>
+      <td>BIGINT</td>
+      <td>A large integer</td>
+      <td>-9223372036854775808</td>
+      <td>9223372036854775807</td>
+    </tr>
+    <tr>
+      <td>FLOAT</td>
+      <td>A single-precision floating-point number</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>DOUBLE</td>
+      <td>A double-precision floating-point number</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>DECIMAL</td>
+      <td>A fixed-point number with a specified precision and scale</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>DATE</td>
+      <td>A date value in the format YYYY-MM-DD</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>TIME</td>
+      <td>A time value in the format HH:MM:SS</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>DATETIME</td>
+      <td>A date and time value in the format YYYY-MM-DD HH:MM:SS</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>TIMESTAMP</td>
+      <td>A UNIX timestamp value stored in UTC</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>YEAR</td>
+      <td>A year value in the format YYYY or YY</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CHAR</td>
+      <td>A fixed-length string with a specified length</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>VARCHAR</td>
+      <td>A variable-length string with a maximum length of 65,535 characters</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>TINYBLOB</td>
+      <td>A small binary object with a maximum length of 255 bytes</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>BLOB</td>
+      <td>A binary object with a maximum length of 65,535 bytes</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><b>Read next:</b>
+<a href="../index.html">Index</a></p>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-copyright text-center"></div>
+</footer>
+</div>
+</body>
+</html>
