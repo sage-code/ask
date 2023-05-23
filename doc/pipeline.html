@@ -35,7 +35,7 @@
 <h1>Software Pileine</h1>
 
 <div class="alert alert-secondary shadow-sm">
-A developer pipeline is a set of automated processes that help developers build, test, and deploy software applications in a more efficient and reliable manner. 
+A developer pipeline is a set of automated processes that help developers build, test, and deploy software applications in a more efficient and reliable manner. It include server side and client side components required by software architecture and platform. We chose Linux platform. 
 </div>
 
 <h2>What is a Pipeline></h2>
@@ -50,19 +50,91 @@ A developer pipeline is a set of automated processes that help developers build,
     <li> <b>Monitoring:</b> This stage involves monitoring the software application in production to ensure it is working as expected and to detect any issues or bugs.</li>
 </ul>
 
-<h2>How to Setup a Pipeline</h2>
+<h2>Dev Environment</h2>
 
-<p>For Ask, that is a Website Quiz App that has a Database and Quiz Questions Stored as JSON we need such a pipeline to update the quizzes all the time. So this app is special because it will remain dependent on GitHub for the entire life cycle.</h2>
+<p>To install all the necessary dependencies to build a quiz app with Svelte, Vite, Jest, NodeJS, Adonis, and MariaDB, along with Visual Studio Code, on Ubuntu, follow these steps:</p>
 
-<p> Here are the steps we shpuld follow to set up a pipeline for a website Quiz app that has a database and quiz questions stored in JSON:</p>
+<h3>Install Node.js:</h3>
+<p>First, we need to install Node.js and npm on your system. To do this, follow these steps:</p>
 
 <ol>
-    <li> <b>Source code management:</b> Use a version control system such as Git to manage the source code of your Quiz application. Store the quiz questions in a separate JSON file, which can be version controlled alongside the source code. </li>
-    <li> <b>Build:</b> Use a build tool such as Gradle or Maven to compile the source code into a deployable artifact such as a WAR file. </li>
-    <li> <b>Testing:</b> Use a testing framework such as JUnit or TestNG to write automated tests for your Quiz application. Write tests to ensure the correctness of the quiz questions and the functionality of the Quiz application. </li>
-    <li> <b>Deployment:</b> Use a deployment tool such as Jenkins or Travis CI to automate the deployment of your Quiz application into a production environment. Have a CI/CD pipeline in place to enable you to push changes to production frequently and with confidence. </li>
-    <li> <b>Monitoring:</b> Use a monitoring tool such as Nagios or Prometheus to monitor your Quiz application in production. Monitor the application metrics such as CPU utilization, memory usage, and response time to detect any performance issues. </li>
+  <li>Open a terminal window by pressing "Ctrl+Alt+T" or searching for "Terminal" in the Activities menu.</li>
+  <li>Update the package list by running:</li>
 </ol>
+
+<code>sudo apt update</code>
+
+<ol start="3">
+  <li>Install Node.js using the following command:</li>
+</ol>
+
+<code>sudo apt install nodejs</code>
+
+<ol start="4">
+  <li>Verify that Node.js and npm are installed by running the following commands:</li>
+</ol>
+
+<code>node -v</code>
+<code>npm -v</code>
+
+<h3>Install VS Code:</h3>
+<p>Next, we need to install Visual Studio Code to develop our project. Follow these steps to install VS Code:</p>
+
+<ol>
+  <li>Download the .deb file from the official website: https://code.visualstudio.com/download</li>
+  <li>Open a terminal window and navigate to the directory where you downloaded the file:</li>
+</ol>
+
+<code>cd Downloads</code>
+
+<ol start="3">
+  <li>Install the .deb package using the following command:</li>
+</ol>
+
+<code>sudo apt install ./<file-name>.deb</code>
+
+<h3>Install MariaDB:</h3>
+<p>MariaDB is an open-source database management system that we will be using for our project. Follow these steps to install MariaDB:</p>
+
+<ol>
+  <li>Install the MariaDB server and client by running the following command:</li>
+</ol>
+
+<code>sudo apt install mariadb-server mariadb-client</code>
+
+<ol start="2">
+  <li>Secure your installation by running:</li>
+</ol>
+
+<code>sudo mysql_secure_installation</code>
+
+<h3>Install Svelte, Vite and Jest:</h3>
+<p>To install Svelte, Vite, and Jest, run the following commands in your terminal:</p>
+
+<ol>
+  <li>Install Svelte globally:</li>
+</ol>
+
+<code>sudo npm install -g svelte</code>
+
+<ol start="2">
+  <li>Install Vite globally:</li>
+</ol>
+
+<code>sudo npm install -g vite</code>
+
+<ol start="3">
+  <li>Install Jest globally:</li>
+</ol>
+
+<code>sudo npm install -g jest</code>
+
+<h3>Install Adonis CLI:</h3>
+<p>AdonisJS is a Node.js web framework. To install the Adonis CLI, run the following command in your terminal:</p>
+
+<code>sudo npm i -g @adonisjs/cli</code>
+
+<p>Once you've completed the above steps, you're all set up to develop a quiz app with Svelte, Vite, Jest, NodeJS, Adonis, and MariaDB, along with Visual Studio Code.</p>
 
 <hr>
 <p><b>Read next:</b>
