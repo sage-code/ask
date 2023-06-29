@@ -9,7 +9,7 @@ Tech stack: Svelte, MariaDB, and Rails:
 
 These links will take you directly to the homepage of each technology where you can learn more about them, their features, and how they can be used to develop amazing applications.
 
-[Project Home](https://sagecode.net/ask)
+[Project Home](https://ask.sagecode.net/index.html)
 
 ---
 
