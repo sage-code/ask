@@ -2,7 +2,7 @@
 
 Website Quiz app for our website. 
 
-Tech stack: Svelte, MariaDB, and Rails:
+Tech stack: Svelte, MariaDB:
 
 * [Svelte](https://svelte.dev/)
 * [MariaDB](https://mariadb.org/)
@@ -13,4 +13,4 @@ These links will take you directly to the homepage of each technology where you 
 
 ---
 
-Copuright (c) Sage-Code 2022
+Copyright (c) Sage-Code 2023
