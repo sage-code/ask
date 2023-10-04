@@ -46,20 +46,127 @@ We use KISS and Separation of Concern principles to create architecture for our 
   <p>Svelte can be used for the front-end development of the Quiz web app, as it is a lightweight and easy-to-learn framework that allows a simple approach to building user interface components. KISS principle can applied here by following simple and easy-to-understand code structure while building components in Svelte. Separation of Concern principle can be followed by separating the logic and markup of the components, so that each component can have a clear purpose and code can be scaled without affecting the complexity of the entire app.</p>
 
 <h3>Node.js</h3>
-  <p>Node.js can be used as the back-end development environment, allowing us to write server-side code using JavaScript. Using KISS, we can keep the code simple by applying best practices like keeping function length small, avoiding callback hell, and using modular code. Separation of Concern principle can be applied by separating the concerns of different parts of the application; creating separate modules for handling database interactions, user authentication, and server-side rendering.</p>
-
-<h3>Adonis</h3>
-  <p>AdonisJS can be used as the web framework for building server-side applications with Node.js. The Separation of Concern principle can be applied by dividing the application into separate modules, which can handle separate concerns of the application like database communication, websockets, email sending etc. KISS principle can be applied by making sure that each module has a clear purpose and is easy to understand.</p>
-
+  <p>Node.js can be used as the back-end development environment, allowing us to write server-side code using JavaScript. Using KISS, we can keep the code simple by applying best practices like keeping function length small, avoiding callback hell, and using modular code. Separation of Concern principle can be applied by separating the concerns of different parts of the application; creating separate modules for handling database interactions, user authentication, and server-side rendering.</p> 
+  
 <h3>MariaDB</h3>
   <p>MariaDB can be used as the database for the Quiz web app, storing the JSON data for quiz questions. The Separation of Concern principle can be applied by using a clear schema design, separating tables with different concerns and creating indexes to improve the speed of data retrieval. KISS principle can be applied by ensuring that the schema is easy to understand and follow while maintaining high-normalization to avoid complexity.</p>
 
 <h3>JSON data files</h3>
   <p>The JSON data files can be used to store the quiz questions, and the Separation of Concern principle can be applied by separating data into different files or tables based on their concerns. The KISS principle can be applied by following a consistent structure across data files. JSON data files can be stored on a version control system for easy access and maintenance. Data files will be split into multiple files. One file/quiz.</p>
 
-</section>
-<hr>
-<section>
+<h2>NestJS and TypeORM</h2>
+
+  <p>NestJS is a progressive Node.js framework for building efficient and scalable server-side applications. It is built on top of Express.js and TypeScript, and it provides a number of features that make it a good choice for developing server-side applications, such as:</p>
+
+  <ul>
+    <li>Modular architecture</li>
+    <li>Dependency injection</li>
+    <li>TypeScript support</li>
+    <li>Powerful features for handling HTTP requests, data processing, and business logic</li>
+  </ul>
+
+  <p>TypeORM is an object-relational mapper (ORM) that provides a simple and effective way to interact with databases. It supports a wide range of databases, including MariaDB, MySQL, PostgreSQL, and SQLite.</p>
+
+  <p>TypeORM provides a number of features that make it a good choice for developing database-driven applications, such as:</p>
+
+  <ul>
+    <li>Entity management</li>
+    <li>Relationships</li>
+    <li>Query builder</li>
+    <li>Migrations</li>
+  </ul>
+
+  <h3>Using NestJS and TypeORM together</h3>
+
+  <p>NestJS and TypeORM can be used together to develop powerful and efficient database-driven applications. NestJS provides the framework for handling HTTP requests, data processing, and business logic, while TypeORM provides the tools for interacting with the database.</p>
+
+  <p>To use NestJS and TypeORM together, you first need to install the TypeORM package:</p>
+
+  <pre><code>
+  npm install typeorm mariadb
+</code></pre>
+
+  <p>Once TypeORM is installed, you need to create a TypeORM configuration file:</p>
+
+  <pre><code>
+  // ormconfig.json
+  {
+    "type": "mariadb",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "",
+    "database": "my_database"
+  }
+</code></pre>
+
+  <p>Next, you need to import the TypeOrmModule into your NestJS root module:</p>
+
+  <pre><code>
+  // app.module.ts
+  import { Module } from '@nestjs/common';
+  import { TypeOrmModule } from '@nestjs/typeorm';
+
+  @Module({
+    imports: [
+      TypeOrmModule.forRoot()
+    ],
+  })
+  export class AppModule {}
+</code></pre>
+
+  <p>Finally, you need to create a repository for each of your MariaDB entities:</p>
+
+  <pre><code>
+  // user.repository.ts
+  import { EntityRepository, Repository } from 'typeorm';
+  import { User } from './user.entity';
+
+  @EntityRepository(User)
+  export class UserRepository extends Repository<User> {}
+  </code></pre>
+
+  <p>Once you have followed these steps, you will be able to use TypeORM to interact with your database from within your NestJS application.</p>
+
+  <h3>Example</h3>
+
+  <p>Here is an example of a simple NestJS controller that uses TypeORM to get all users from the database:</p>
+
+  <pre><code> 
+  // user.controller.ts
+  import { Controller, Get } from '@nestjs/common';
+  import { UserRepository } from './user.repository';
+
+  @Controller('users')
+  export class UserController {
+    constructor(private readonly userRepository: UserRepository) {}
+
+    @Get()
+    async getAllUsers() {
+      return await this.userRepository.find();
+    }
+  }
+</code></pre>
+
+  <p>To use this controller, you first need to create a route for it in your NestJS application:</p>
+
+<pre><code>
+  // app.module.ts
+  import { Module } from '@nestjs/common';
+  import { UserController } from './user.controller';
+
+  @Module({
+    controllers: [ UserController ],
+  })
+  export class AppModule {}
+</code></pre>
+
+  <p>Once the route is created, you can send a GET request to /users to get all users from the database.</p>
+
+<h3>Conclusion</h3>
+
+  <p>NestJS and TypeORM are two powerful tools that can be used together to develop powerful and efficient database-driven applications. NestJS provides the framework for handling HTTP requests, data processing, and business logic, while TypeORM provides the tools for interacting with the database.</p>
+
 <h2>Quality</h2>
 
 <h3>Performance</h3>
@@ -82,10 +189,11 @@ We use KISS and Separation of Concern principles to create architecture for our 
     <li><a href="https://docs.adonisjs.com/" target="_blank">AdonisJS documentation</a></li>
     <li><a href="https://nodejs.org/en/docs/" target="_blank">Node.js documentation</a></li>
     <li><a href="https://mariadb.com/docs/" target="_blank">MariaDB documentation</a></li>
+    <li><a href="https://nestjs.com/">NestJS</a></li>
+    <li><a href="https://typeorm.io/">TypeORM</a></li>
+    <li><a href="https://svelterama.com/blog/svelte-nest-integration/">Svelte+NestJS integration</a></li>
   </ul>
-</section>
 <hr>
-<section>
 <h2>Conclusion</h2>
 <p>
 Based on the technologies used and best practices implemented, the proposed architecture for the Quiz Web App is a sound one that can meet the requirements of a scalable, performant, and secure web application. Svelte as the frontend framework provides a lightweight and reactive interface, while AdonisJS on the server-side provides a modular, secure, and performant middleware-based system that integrates with MariaDB as the RDBMS. 
@@ -93,7 +201,6 @@ Based on the technologies used and best practices implemented, the proposed arch
 <p>Moreover, deploying the Quiz Web App on shared hosting plans can make the app host more cost-effectively, as shared hosting reduces the overhead of server and infrastructural expenses. AdonisJS can be deployed easily to various hosting services such as Cloudways, Heroku, or DigitalOcean, with pricing plans that cater to different needs for RAM, CPU, storage, and bandwidth capacity. Similarly, MariaDB is open-source and can be installed on various platforms for free, making it an affordable option for the database layer of the Quiz Web App.</p>
 
 <p>In summary, the proposed Quiz Web App architecture is not only feature-rich but also efficient and cost-effective in terms of hosting it on a shared hosting plan.</p>
-</section>
 
 <hr>
 <p><b>Read next:</b>
