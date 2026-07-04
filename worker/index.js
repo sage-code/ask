@@ -1,13 +1,24 @@
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
-    if (url.pathname.startsWith('/api/')) {
-      return handleApi(request, url, env);
+    try {
+      const url = new URL(request.url);
+      if (url.pathname.startsWith('/api/')) {
+        return await handleApi(request, url, env);
+      }
+
+      const assetHandler = env.__STATIC_CONTENT || globalThis.__STATIC_CONTENT;
+      if (assetHandler?.fetch) {
+        try {
+          return await assetHandler.fetch(request);
+        } catch (error) {
+          return new Response(JSON.stringify({ error: 'Static asset fetch failed', details: error.message }), { status: 500, headers: jsonHeaders() });
+        }
+      }
+
+      return new Response(JSON.stringify({ error: 'Static content not bound. Check your wrangler site configuration.' }), { status: 500, headers: jsonHeaders() });
+    } catch (error) {
+      return new Response(JSON.stringify({ error: 'Worker error', details: error.message }), { status: 500, headers: jsonHeaders() });
     }
-    if (env.__STATIC_CONTENT) {
-      return env.__STATIC_CONTENT.fetch(request);
-    }
-    return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers: jsonHeaders() });
   }
 };
 
