@@ -1,4 +1,4 @@
-name = "ask-cloudflare-svelte"
+name = "ask"
 main = "./worker/index.js"
 workers_dev = true
 compatibility_date = "2026-01-01"
