@@ -78,7 +78,7 @@ compatibility_date = "2026-01-01"
 
 [[d1_databases]]
 binding = "DATABASE"
-database_id = "YOUR_D1_DATABASE_ID"
+database_id = "be7f803f-9df5-4e53-80cb-193f544d26aa" # ask-db
 
 [build]
 command = "npm install && npm run build"
@@ -90,8 +90,10 @@ DATABASE_URL = ""
 4. Deploy with:
 
 ```bash
-npx wrangler deploy
+npm run deploy
 ```
+
+The deploy command runs the schema automatically before publishing, so you do not need to execute SQL manually.
 
 ## Notes
 

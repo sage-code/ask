@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "wrangler publish"
+    "schema": "wrangler d1 execute --database-id be7f803f-9df5-4e53-80cb-193f544d26aa --file scripts/schema.sql",
+    "deploy": "npm run schema && wrangler deploy"
   },
   "dependencies": {
     "svelte": "^4.0.0"
