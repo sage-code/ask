@@ -1,0 +1,16 @@
+name = "ask-cloudflare-svelte"
+type = "javascript"
+main = "./worker/index.js"
+account_id = ""
+workers_dev = true
+compatibility_date = "2026-01-01"
+
+[[d1_databases]]
+binding = "DATABASE"
+database_name = "ask_db"
+
+[build]
+command = "npm install && npm run build"
+
+[vars]
+DATABASE_URL = ""

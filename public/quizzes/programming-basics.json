@@ -1,0 +1,57 @@
+{
+  "slug": "programming-basics",
+  "title": "Programming Basics Quiz",
+  "description": "A sample quiz covering fundamental programming and software engineering concepts.",
+  "questions": [
+    {
+      "text": "Which of the following is a loop structure in most programming languages?",
+      "options": ["class", "for", "package", "module"],
+      "correct": 1
+    },
+    {
+      "text": "What does HTML stand for?",
+      "options": ["Hypertext Made Language", "Hyperlinks and Text Markup Language", "HyperText Markup Language", "Hyperlinking Text Markup Language"],
+      "correct": 2
+    },
+    {
+      "text": "Which language is most commonly used for styling web pages?",
+      "options": ["Java", "CSS", "Python", "SQL"],
+      "correct": 1
+    },
+    {
+      "text": "In software engineering, what is a 'bug'?",
+      "options": ["A planned feature", "A version control branch", "An error or defect in code", "The final release"],
+      "correct": 2
+    },
+    {
+      "text": "What is the primary purpose of unit tests?",
+      "options": ["Deploy code to production", "Verify a small piece of code works correctly", "Write documentation", "Create user interfaces"],
+      "correct": 1
+    },
+    {
+      "text": "Which term describes reusable code that performs a specific task?",
+      "options": ["Variable", "Function", "Loop", "Comment"],
+      "correct": 1
+    },
+    {
+      "text": "Which database query language is used to read and manipulate relational data?",
+      "options": ["HTML", "CSS", "SQL", "JSON"],
+      "correct": 2
+    },
+    {
+      "text": "What is the main benefit of using version control?",
+      "options": ["Faster runtime", "Centralized database storage", "Track changes and collaborate safely", "Increase network bandwidth"],
+      "correct": 2
+    },
+    {
+      "text": "What does 'API' stand for?",
+      "options": ["Application Programming Interface", "Automated Program Integration", "Applied Processing Instruction", "Advanced Performance Index"],
+      "correct": 0
+    },
+    {
+      "text": "In web development, what is a 'shared URL'?",
+      "options": ["A password-protected login", "A link that can be shared for direct quiz access", "A local file path", "A backend database query"],
+      "correct": 1
+    }
+  ]
+}
