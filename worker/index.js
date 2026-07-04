@@ -9,7 +9,12 @@ export default {
       const assetHandler = env.__STATIC_CONTENT || globalThis.__STATIC_CONTENT;
       if (assetHandler?.fetch) {
         try {
-          return await assetHandler.fetch(request);
+          const response = await assetHandler.fetch(request);
+          if (response.status === 404 && !url.pathname.startsWith('/api/')) {
+            const indexRequest = new Request(new URL('/index.html', request.url), request);
+            return await assetHandler.fetch(indexRequest);
+          }
+          return response;
         } catch (error) {
           return new Response(JSON.stringify({ error: 'Static asset fetch failed', details: error.message }), { status: 500, headers: jsonHeaders() });
         }
