@@ -4,7 +4,7 @@ This project is a Cloudflare-ready quiz app built with Svelte and Cloudflare Wor
 
 ## Features
 
-* Mentor / student registration
+* Mentor / Student registration
 * Shared quiz URLs by slug
 * Quiz content stored in JSON files
 * D1 database stores users and quiz results only
@@ -21,7 +21,13 @@ This project is a Cloudflare-ready quiz app built with Svelte and Cloudflare Wor
 * `doc/architecture.html` - Cloudflare runway architecture
 * `doc/database.html` - database structure and D1 setup
 
-## Setup
+## Prerequisites
+
+* Node.js 18 or newer
+* npm (bundled with Node.js)
+* Optional: `wrangler` CLI for Cloudflare Worker deployment
+
+## Local testing
 
 1. Install dependencies:
 
@@ -29,31 +35,74 @@ This project is a Cloudflare-ready quiz app built with Svelte and Cloudflare Wor
 npm install
 ```
 
-2. Run the dev server:
+2. Run the Svelte dev server:
 
 ```bash
 npm run dev
 ```
 
-3. Build the front-end:
+3. Open the app in your browser at the local URL shown by Vite, typically:
+
+```text
+http://localhost:5173
+```
+
+4. If you want to run the Cloudflare Worker locally, install Wrangler globally:
 
 ```bash
-npm run build
+npm install -g wrangler
+```
+
+Then start the worker dev environment with:
+
+```bash
+wrangler dev
 ```
 
 ## Cloudflare deployment
 
-1. Create a Cloudflare account, install Wrangler, and log in.
-2. Create a D1 database in Cloudflare.
-3. Update `wrangler.toml` with your `account_id` and D1 binding settings.
-4. Publish the API worker:
+1. Create a Cloudflare account and install Wrangler.
+2. Create a D1 database in the Cloudflare dashboard.
+3. Update `wrangler.toml`:
+
+* Remove any empty `account_id` field.
+* Set the D1 binding using `database_id`.
+
+Example:
+
+```toml
+name = "ask-cloudflare-svelte"
+main = "./worker/index.js"
+workers_dev = true
+compatibility_date = "2026-01-01"
+
+[[d1_databases]]
+binding = "DATABASE"
+database_id = "YOUR_D1_DATABASE_ID"
+
+[build]
+command = "npm install && npm run build"
+
+[vars]
+DATABASE_URL = ""
+```
+
+4. Deploy with:
 
 ```bash
-wrangler publish
+npx wrangler deploy
 ```
 
 ## Notes
 
-* Quiz questions are loaded from JSON files under `public/quizzes/`.
-* The database stores only `users` and `results`.
-* Each quiz is identified by a shareable slug, for example: `programming-basics`.
+* `public/quizzes/` contains JSON quiz files loaded by the front-end.
+* The Worker stores only `users` and `results` in D1.
+* Quiz URLs use a slug query parameter, for example:
+  `?quiz=programming-basics`
+* If Cloudflare detects Bun or Node, it may run `bun install` by default. The project works with npm and Wrangler 3/4.
+
+## Troubleshooting
+
+* If import fails because `wrangler.toml` has an empty `account_id`, remove that line.
+* If D1 deployment fails, ensure `database_id` is set in `wrangler.toml`.
+* If local build fails because of accessibility warnings, update the component markup or disable A11y warnings in Vite if needed.
