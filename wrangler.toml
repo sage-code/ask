@@ -1,5 +1,6 @@
-name = "ask-cloudflare-svelte"
-main = "./worker/index.js"
+name = "ask"
+type = "javascript"
+main = "worker/index.js"
 workers_dev = true
 compatibility_date = "2026-01-01"
 
@@ -11,8 +12,7 @@ database_id = "be7f803f-9df5-4e53-80cb-193f544d26aa" # ask-db
 [build]
 command = "npm install && npm run schema && npm run build"
 
-[site]
-bucket = "./dist"
+site = { bucket = "dist" }
 
 [vars]
 DATABASE_URL = ""
