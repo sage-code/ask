@@ -11,5 +11,8 @@ database_id = "be7f803f-9df5-4e53-80cb-193f544d26aa" # ask-db
 [build]
 command = "npm install && npm run schema && npm run build"
 
+[site]
+bucket = "./dist"
+
 [vars]
 DATABASE_URL = ""

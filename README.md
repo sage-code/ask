@@ -95,6 +95,16 @@ npm run deploy
 
 The deploy command runs the schema automatically before publishing, so you do not need to execute SQL manually.
 
+### What URL to use
+
+After a successful deploy, the worker URL is shown in the deploy logs, for example:
+
+```text
+https://ask.elucian-moise.workers.dev
+```
+
+This URL will now serve the built Svelte app from `dist/`.
+
 ## Notes
 
 * `public/quizzes/` contains JSON quiz files loaded by the front-end.
