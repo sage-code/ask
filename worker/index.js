@@ -6,7 +6,16 @@ export default {
         return await handleApi(request, url, env);
       }
 
-      const assetHandler = env?.ASSETS || env?.__STATIC_CONTENT || globalThis?.__STATIC_CONTENT || (typeof __STATIC_CONTENT !== 'undefined' ? __STATIC_CONTENT : undefined);
+      const candidates = [
+        { name: 'env.ASSETS', value: env?.ASSETS },
+        { name: 'env.__STATIC_CONTENT', value: env?.__STATIC_CONTENT },
+        { name: 'globalThis.ASSETS', value: globalThis?.ASSETS },
+        { name: 'globalThis.__STATIC_CONTENT', value: globalThis?.__STATIC_CONTENT },
+        { name: 'topLevel.ASSETS', value: typeof ASSETS !== 'undefined' ? ASSETS : undefined },
+        { name: 'topLevel.__STATIC_CONTENT', value: typeof __STATIC_CONTENT !== 'undefined' ? __STATIC_CONTENT : undefined }
+      ];
+      const assetHandler = candidates.find(candidate => candidate.value?.fetch)?.value;
+
       if (assetHandler?.fetch) {
         try {
           const response = await assetHandler.fetch(request);
@@ -22,12 +31,13 @@ export default {
 
       return new Response(JSON.stringify({
         error: 'Static content not bound. Check your wrangler site configuration.',
-        bindings: {
-          env___ASSETS: Boolean(env?.ASSETS),
-          env___STATIC_CONTENT: Boolean(env?.__STATIC_CONTENT),
-          globalThis___STATIC_CONTENT: Boolean(globalThis?.__STATIC_CONTENT),
-          topLevel___STATIC_CONTENT: typeof __STATIC_CONTENT !== 'undefined'
-        }
+        bindings: candidates.map(candidate => ({
+          name: candidate.name,
+          present: Boolean(candidate.value),
+          type: candidate.value === undefined ? 'undefined' : typeof candidate.value,
+          hasFetch: candidate.value?.fetch ? true : false
+        })),
+        envKeys: Object.keys(env || {})
       }), { status: 500, headers: jsonHeaders() });
     } catch (error) {
       return new Response(JSON.stringify({ error: 'Worker error', details: error.message }), { status: 500, headers: jsonHeaders() });
