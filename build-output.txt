@@ -1,0 +1,61 @@
+
+> build
+> vite build
+
+[36mvite v8.1.3 [32mbuilding client environment for production...[36m[39m
+[2Ktransforming...4:27:09 AM [vite-plugin-svelte] src/App.svelte:200:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+198:       <form on:submit={register}>
+199:         <div class="field">
+200:           <label>Name</label>
+                                  ^
+201:           <input type="text" bind:value={name} placeholder="Your full name" />
+202:         </div>
+4:27:09 AM [vite-plugin-svelte] src/App.svelte:204:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+202:         </div>
+203:         <div class="field">
+204:           <label>Email</label>
+                                   ^
+205:           <input type="email" bind:value={email} placeholder="you@example.com" />
+206:         </div>
+4:27:09 AM [vite-plugin-svelte] src/App.svelte:208:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+206:         </div>
+207:         <div class="field">
+208:           <label>Role</label>
+                                  ^
+209:           <select bind:value={role}>
+210:             <option value="student">Student</option>
+4:27:09 AM [vite-plugin-svelte] src/App.svelte:240:12 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+238: 
+239:           {#each quiz.questions[current].options as option, index}
+240:             <div
+                      ^
+241:               class="option {selected === index ? 'selected' : ''}"
+242:               on:click={() => { selected = index; message = '' }}
+4:27:09 AM [vite-plugin-svelte] src/App.svelte:240:12 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+238: 
+239:           {#each quiz.questions[current].options as option, index}
+240:             <div
+                      ^
+241:               class="option {selected === index ? 'selected' : ''}"
+242:               on:click={() => { selected = index; message = '' }}
+4:27:09 AM [vite-plugin-svelte] src/App.svelte:132:2 Unused CSS selector "body"
+https://svelte.dev/e/css_unused_selector
+130: 
+131: <style>
+132:   body {
+           ^
+133:     margin: 0;
+134:     font-family: system-ui, sans-serif;
+✓ 110 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.40 kB │ gzip:  0.29 kB
+dist/assets/index-DkHrOd7F.css   0.79 kB │ gzip:  0.33 kB
+dist/assets/index-D2Akw9xl.js   38.92 kB │ gzip: 15.32 kB
+
+[32m✓ built in 217ms[39m

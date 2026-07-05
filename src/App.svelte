@@ -118,13 +118,13 @@
     }
   }
 
-  onMount(async () => {
+  onMount(() => {
     const params = new URLSearchParams(window.location.search);
     const querySlug = params.get('quiz');
     if (querySlug) {
       quizSlug = querySlug;
     }
-    await loadQuiz();
+    loadQuiz();
   });
 </script>
 

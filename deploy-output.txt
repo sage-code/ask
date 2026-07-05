@@ -1,0 +1,170 @@
+
+ ⛅️ wrangler 4.107.0
+────────────────────
+[custom build] Running: npm install && npm run schema && npm run build
+[custom build] 
+[custom build] up to date, audited 71 packages in 1s
+[custom build] 
+[custom build] 
+[custom build] 15 packages are looking for funding
+[custom build]   run `npm fund` for details
+[custom build] 
+[custom build] found 0 vulnerabilities
+[custom build] 
+[custom build] npm warn allow-scripts 3 packages have install scripts not yet covered by allowScripts:
+[custom build] npm warn allow-scripts   esbuild@0.28.1 (install: (install scripts present))
+[custom build] npm warn allow-scripts   sharp@0.34.5 (install: (install scripts present))
+[custom build] npm warn allow-scripts   workerd@1.20260701.1 (install: (install scripts present))
+[custom build] npm warn allow-scripts
+[custom build] npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+[custom build] 
+[custom build] 
+[custom build] > schema
+[custom build] > npx wrangler d1 execute DATABASE --remote --file scripts/schema.sql --yes
+[custom build] 
+[custom build] 
+[custom build] 
+[custom build]  ⛅️ wrangler 4.107.0
+[custom build] ────────────────────
+[custom build] 
+[custom build] Resource location: remote 
+[custom build] 
+[custom build] 
+[custom build] [33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1m⚠️ This process may take some time, during which your D1 database will be unavailable to serve queries.[0m
+[custom build] 
+[custom build] 
+[custom build] 
+[custom build] 🌀 Executing on remote database DATABASE (be7f803f-9df5-4e53-80cb-193f544d26aa):
+[custom build] 
+[custom build] 🌀 To execute on your local development database, remove the --remote flag from your wrangler command.
+[custom build] 
+[custom build] Note: if the execution fails to complete, your DB will return to its original state and you can safely retry.
+[custom build] 
+[custom build] ├ Checking if file needs uploading
+[custom build] 
+[custom build] │
+[custom build] 
+[custom build] 🌀 File already uploaded. Processing.
+[custom build] 🌀 Starting import...
+[custom build] 🌀 Processed 2 queries.
+[custom build] 
+[custom build] 🚣 Executed 2 queries in 2.81ms (0 rows read, 0 rows written)
+[custom build]    Database is currently at bookmark 00000014-00000004-0000509f-bb0534d07f7e583ba48de06132a963fd.
+[custom build] [
+[custom build]   {
+[custom build]     "results": [
+[custom build]       {
+[custom build]         "Total queries executed": 2,
+[custom build]         "Rows read": 0,
+[custom build]         "Rows written": 0,
+[custom build]         "Database size (MB)": "0.03"
+[custom build]       }
+[custom build]     ],
+[custom build]     "success": true,
+[custom build]     "finalBookmark": "00000014-00000004-0000509f-bb0534d07f7e583ba48de06132a963fd",
+[custom build]     "meta": {
+[custom build]       "served_by": "v3-prod",
+[custom build]       "served_by_region": "ENAM",
+[custom build]       "served_by_colo": "MIA",
+[custom build]       "served_by_primary": true,
+[custom build]       "timings": {
+[custom build]         "sql_duration_ms": 2.8109
+[custom build]       },
+[custom build]       "duration": 2.8109,
+[custom build]       "changes": 1,
+[custom build]       "last_row_id": 0,
+[custom build]       "changed_db": true,
+[custom build]       "size_after": 32768,
+[custom build]       "rows_read": 0,
+[custom build]       "rows_written": 0,
+[custom build]       "num_tables": 2,
+[custom build]       "total_attempts": 1
+[custom build]     }
+[custom build]   }
+[custom build] ]
+[custom build] 
+[custom build] 
+[custom build] > build
+[custom build] > vite build
+[custom build] 
+[custom build] 
+[custom build] [36mvite v8.1.3 [32mbuilding client environment for production...[36m[39m
+[custom build] 
+[custom build] [2Ktransforming...
+[custom build] 4:27:18 AM [vite-plugin-svelte] src/App.svelte:200:10 A form label must be associated with a control
+[custom build] https://svelte.dev/e/a11y_label_has_associated_control
+[custom build] 198:       <form on:submit={register}>
+[custom build] 199:         <div class="field">
+[custom build] 200:           <label>Name</label>
+[custom build]                                   ^
+[custom build] 201:           <input type="text" bind:value={name} placeholder="Your full name" />
+[custom build] 202:         </div>
+[custom build] 
+[custom build] 4:27:18 AM [vite-plugin-svelte] src/App.svelte:204:10 A form label must be associated with a control
+[custom build] https://svelte.dev/e/a11y_label_has_associated_control
+[custom build] 202:         </div>
+[custom build] 203:         <div class="field">
+[custom build] 204:           <label>Email</label>
+[custom build]                                    ^
+[custom build] 205:           <input type="email" bind:value={email} placeholder="you@example.com" />
+[custom build] 206:         </div>
+[custom build] 4:27:18 AM [vite-plugin-svelte] src/App.svelte:208:10 A form label must be associated with a control
+[custom build] https://svelte.dev/e/a11y_label_has_associated_control
+[custom build] 206:         </div>
+[custom build] 207:         <div class="field">
+[custom build] 208:           <label>Role</label>
+[custom build]                                   ^
+[custom build] 209:           <select bind:value={role}>
+[custom build] 210:             <option value="student">Student</option>
+[custom build] 4:27:18 AM [vite-plugin-svelte] src/App.svelte:240:12 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+[custom build] https://svelte.dev/e/a11y_click_events_have_key_events
+[custom build] 238: 
+[custom build] 239:           {#each quiz.questions[current].options as option, index}
+[custom build] 240:             <div
+[custom build]                       ^
+[custom build] 241:               class="option {selected === index ? 'selected' : ''}"
+[custom build] 242:               on:click={() => { selected = index; message = '' }}
+[custom build] 4:27:18 AM [vite-plugin-svelte] src/App.svelte:240:12 `<div>` with a click handler must have an ARIA role
+[custom build] https://svelte.dev/e/a11y_no_static_element_interactions
+[custom build] 238: 
+[custom build] 239:           {#each quiz.questions[current].options as option, index}
+[custom build] 240:             <div
+[custom build]                       ^
+[custom build] 241:               class="option {selected === index ? 'selected' : ''}"
+[custom build] 242:               on:click={() => { selected = index; message = '' }}
+[custom build] 4:27:18 AM [vite-plugin-svelte] src/App.svelte:132:2 Unused CSS selector "body"
+[custom build] https://svelte.dev/e/css_unused_selector
+[custom build] 130: 
+[custom build] 131: <style>
+[custom build] 132:   body {
+[custom build]            ^
+[custom build] 133:     margin: 0;
+[custom build] 134:     font-family: system-ui, sans-serif;
+[custom build] 
+[custom build] ✓ 110 modules transformed.
+[custom build] 
+[custom build] rendering chunks...
+[custom build] 
+[custom build] computing gzip size...
+[custom build] 
+[custom build] dist/index.html                  0.40 kB │ gzip:  0.29 kB
+[custom build] dist/assets/index-DkHrOd7F.css   0.79 kB │ gzip:  0.33 kB
+[custom build] dist/assets/index-D2Akw9xl.js   38.92 kB │ gzip: 15.32 kB
+[custom build] 
+[custom build] 
+[custom build] [32m✓ built in 260ms[39m
+[custom build] 
+🌀 Building list of assets...
+✨ Read 6 files from the assets directory C:\Users\eluci\sage-code\ask\dist
+🌀 Starting asset upload...
+No updated asset files to upload. Proceeding with deployment...
+Total Upload: 4.28 KiB / gzip: 1.32 KiB
+Your Worker has access to the following bindings:
+Binding                    Resource         
+env.DATABASE (ask-db)      D1 Database      
+env.ASSETS                 Assets           
+
+Uploaded ask (5.07 sec)
+Deployed ask triggers (0.74 sec)
+  https://ask.elucian-moise.workers.dev
+Current Version ID: 889a0d4f-8d7d-46bb-92c4-f93752efb7e9
