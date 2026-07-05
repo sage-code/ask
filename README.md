@@ -1,33 +1,30 @@
-# Ask Cloudflare Svelte
+# Sage Quiz
 
-This project is a Cloudflare-ready quiz app built with Svelte and Cloudflare Workers.
+Sage Quiz is a dark, responsive quiz application built with Svelte and Cloudflare Workers. It is designed for the SageCode community and is ready to be hosted on a subdomain such as quiz.sagecode.org.
 
-## Features
+## What this app does
 
-* Mentor / Student registration
-* Shared quiz URLs by slug
-* Quiz content stored in JSON files
-* D1 database stores users and quiz results only
-* Cloudflare Worker API for registration and result persistence
+* Presents a polished landing experience with Login, Register, Quizzes, and Results navigation.
+* Supports a responsive hamburger menu for mobile screens.
+* Lets users create an account with email, password, Discord username, and profile URL.
+* Allows users to sign in with email and password and save quiz results.
+* Shows a public results leaderboard ordered by most recent submission.
+* Lists available quizzes with quiz code, short title, and the number of takers.
+* Serves quiz content from JSON files and stores results in Cloudflare D1.
 
 ## Project layout
 
-* `index.html` - Svelte app entry file
-* `src/` - Svelte application source code
-* `public/quizzes/` - quiz content JSON files
-* `worker/index.js` - Cloudflare Worker API
-* `scripts/schema.sql` - D1 database schema
-* `wrangler.toml` - Cloudflare Worker configuration
-* `doc/architecture.html` - Cloudflare runway architecture
-* `doc/database.html` - database structure and D1 setup
+* `index.html` - Vite entry page and site metadata.
+* `src/` - Svelte application source code.
+* `public/quizzes/` - quiz content JSON files and branding assets.
+* `worker/index.js` - Cloudflare Worker API and routing.
+* `scripts/schema.sql` - D1 database schema.
+* `wrangler.toml` - Cloudflare Worker configuration.
+* `doc/architecture.html` - implementation overview and deployment plan.
+* `doc/database.html` - data model and D1 guidance.
+* `doc/runway.html` - product roadmap and subdomain rollout notes.
 
-## Prerequisites
-
-* Node.js 18 or newer
-* npm (bundled with Node.js)
-* Optional: `wrangler` CLI for Cloudflare Worker deployment
-
-## Local testing
+## Local development
 
 1. Install dependencies:
 
@@ -35,86 +32,18 @@ This project is a Cloudflare-ready quiz app built with Svelte and Cloudflare Wor
 npm install
 ```
 
-2. Run the Svelte dev server:
+2. Start the frontend:
 
 ```bash
 npm run dev
 ```
 
-3. Open the app in your browser at the local URL shown by Vite, typically:
+3. Open the local Vite URL shown in the terminal.
 
-```text
-http://localhost:5173
-```
+## Deployment notes
 
-4. If you want to run the Cloudflare Worker locally, install Wrangler globally:
+The app is prepared for Cloudflare Workers and can be served from a subdomain such as quiz.sagecode.org. The DNS record should point that subdomain to the Cloudflare Worker and the Worker should be deployed from this project.
 
-```bash
-npm install -g wrangler
-```
+## Documentation
 
-Then start the worker dev environment with:
-
-```bash
-wrangler dev
-```
-
-## Cloudflare deployment
-
-1. Create a Cloudflare account and install Wrangler.
-2. Create a D1 database in the Cloudflare dashboard.
-3. Update `wrangler.toml`:
-
-* Remove any empty `account_id` field.
-* Set the D1 binding using `database_id`.
-
-Example:
-
-```toml
-name = "ask-cloudflare-svelte"
-main = "./worker/index.js"
-workers_dev = true
-compatibility_date = "2026-01-01"
-
-[[d1_databases]]
-binding = "DATABASE"
-database_id = "be7f803f-9df5-4e53-80cb-193f544d26aa" # ask-db
-
-[build]
-command = "npm install && npm run build"
-
-[vars]
-DATABASE_URL = ""
-```
-
-4. Deploy with:
-
-```bash
-npm run deploy
-```
-
-The deploy command runs the schema automatically before publishing, so you do not need to execute SQL manually.
-
-### What URL to use
-
-After a successful deploy, the worker URL is shown in the deploy logs, for example:
-
-```text
-https://ask.elucian-moise.workers.dev
-```
-
-This URL will now serve the built Svelte app from `dist/`.
-
-## Notes
-
-* `public/quizzes/` contains JSON quiz files loaded by the front-end.
-* The Worker stores only `users` and `results` in D1.
-* Quiz URLs use a slug query parameter, for example:
-  `?quiz=programming-basics`
-* If Cloudflare detects Bun or Node, it may run `bun install` by default. The project works with npm and Wrangler 3/4.
-
-## Troubleshooting
-
-* If import fails because `wrangler.toml` has an empty `account_id`, remove that line.
-* If D1 deployment fails, ensure `database_id` is set in `wrangler.toml`.
-* If local build fails because of accessibility warnings, update the component markup or disable A11y warnings in Vite if needed.
+See the HTML docs in the doc folder for architecture, database, and runway planning details.

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sage Quiz Runway Documentation</title>
+    <style>
+      body { font-family: Inter, system-ui, sans-serif; margin: 2rem auto; max-width: 960px; line-height: 1.6; color: #0f172a; }
+      h1, h2 { color: #0f172a; }
+      code { background: #e2e8f0; padding: 0.15rem 0.3rem; border-radius: 0.25rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Sage Quiz runway documentation</h1>
+    <p>This document captures the current product direction for Sage Quiz as a SageCode subdomain experience.</p>
+
+    <h2>Product goals</h2>
+    <ul>
+      <li>Serve as a modern quiz experience for the SageCode community.</li>
+      <li>Support a subdomain such as <code>quiz.sagecode.org</code>.</li>
+      <li>Offer a clean navigation flow with Home, Login, Register, Quizzes, and Results.</li>
+      <li>Provide a responsive dark design with a hamburger menu on smaller screens.</li>
+    </ul>
+
+    <h2>Current experience</h2>
+    <ul>
+      <li>Users can register with email, password, Discord username, and profile URL.</li>
+      <li>Users can sign in with email and password.</li>
+      <li>Quizzes are listed with code, short name, and taker count.</li>
+      <li>Public results are shown in reverse chronological order.</li>
+      <li>Authenticated users can review their own recent results.</li>
+    </ul>
+
+    <h2>Technical rollout</h2>
+    <ul>
+      <li>Frontend: Svelte + Vite.</li>
+      <li>Backend: Cloudflare Worker.</li>
+      <li>Data: Cloudflare D1 database.</li>
+      <li>Static assets: Worker assets binding.</li>
+    </ul>
+
+    <h2>Next steps</h2>
+    <ul>
+      <li>Point the subdomain DNS record to the Cloudflare Worker.</li>
+      <li>Use the SageCode icon and logo assets from the CSE project in the branding.</li>
+      <li>Expand the quiz catalog with more quiz JSON files over time.</li>
+      <li>Add stronger password policies and email verification later if needed.</li>
+    </ul>
+  </body>
+</html>
