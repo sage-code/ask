@@ -6,7 +6,7 @@ export default {
         return await handleApi(request, url, env);
       }
 
-      const assetHandler = env?.__STATIC_CONTENT || globalThis?.__STATIC_CONTENT || (typeof __STATIC_CONTENT !== 'undefined' ? __STATIC_CONTENT : undefined);
+      const assetHandler = env?.ASSETS || env?.__STATIC_CONTENT || globalThis?.__STATIC_CONTENT || (typeof __STATIC_CONTENT !== 'undefined' ? __STATIC_CONTENT : undefined);
       if (assetHandler?.fetch) {
         try {
           const response = await assetHandler.fetch(request);
@@ -23,6 +23,7 @@ export default {
       return new Response(JSON.stringify({
         error: 'Static content not bound. Check your wrangler site configuration.',
         bindings: {
+          env___ASSETS: Boolean(env?.ASSETS),
           env___STATIC_CONTENT: Boolean(env?.__STATIC_CONTENT),
           globalThis___STATIC_CONTENT: Boolean(globalThis?.__STATIC_CONTENT),
           topLevel___STATIC_CONTENT: typeof __STATIC_CONTENT !== 'undefined'
