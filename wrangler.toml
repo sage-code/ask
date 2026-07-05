@@ -2,6 +2,7 @@ name = "ask"
 main = "./worker/index.js"
 workers_dev = true
 compatibility_date = "2026-01-01"
+account_id = "534437c43880129121f5e7e0a2b2a3b0"
 
 assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "single-page-application" }
 
@@ -12,7 +13,4 @@ database_id = "be7f803f-9df5-4e53-80cb-193f544d26aa" # ask-db
 
 [build]
 command = "npm install && npm run schema && npm run build"
-
-[vars]
-DATABASE_URL = ""
 

@@ -6,8 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "schema": "wrangler d1 execute DATABASE --remote --file scripts/schema.sql --yes",
-    "deploy": "npm run schema && wrangler deploy"
+    "schema": "npx wrangler d1 execute DATABASE --remote --file scripts/schema.sql --yes",
+    "deploy": "npm run schema && npx wrangler deploy"
   },
   "dependencies": {
     "svelte": "^5.56.4"

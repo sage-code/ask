@@ -1,47 +1,24 @@
 export default {
   async fetch(request, env) {
-    try {
-      const url = new URL(request.url);
-      if (url.pathname.startsWith('/api/')) {
-        return await handleApi(request, url, env);
-      }
+    const url = new URL(request.url);
 
-      const candidates = [
-        { name: 'env.ASSETS', value: env?.ASSETS },
-        { name: 'env.__STATIC_CONTENT', value: env?.__STATIC_CONTENT },
-        { name: 'globalThis.ASSETS', value: globalThis?.ASSETS },
-        { name: 'globalThis.__STATIC_CONTENT', value: globalThis?.__STATIC_CONTENT },
-        { name: 'topLevel.ASSETS', value: typeof ASSETS !== 'undefined' ? ASSETS : undefined },
-        { name: 'topLevel.__STATIC_CONTENT', value: typeof __STATIC_CONTENT !== 'undefined' ? __STATIC_CONTENT : undefined }
-      ];
-      const assetHandler = candidates.find(candidate => candidate.value?.fetch)?.value;
-
-      if (assetHandler?.fetch) {
-        try {
-          const response = await assetHandler.fetch(request);
-          if (response.status === 404 && !url.pathname.startsWith('/api/')) {
-            const indexRequest = new Request(new URL('/index.html', request.url), request);
-            return await assetHandler.fetch(indexRequest);
-          }
-          return response;
-        } catch (error) {
-          return new Response(JSON.stringify({ error: 'Static asset fetch failed', details: error.message }), { status: 500, headers: jsonHeaders() });
-        }
-      }
-
-      return new Response(JSON.stringify({
-        error: 'Static content not bound. Check your wrangler site configuration.',
-        bindings: candidates.map(candidate => ({
-          name: candidate.name,
-          present: Boolean(candidate.value),
-          type: candidate.value === undefined ? 'undefined' : typeof candidate.value,
-          hasFetch: candidate.value?.fetch ? true : false
-        })),
-        envKeys: Object.keys(env || {})
-      }), { status: 500, headers: jsonHeaders() });
-    } catch (error) {
-      return new Response(JSON.stringify({ error: 'Worker error', details: error.message }), { status: 500, headers: jsonHeaders() });
+    if (url.pathname.startsWith('/api/')) {
+      return await handleApi(request, url, env);
     }
+
+    if (!env.ASSETS?.fetch) {
+      return new Response(JSON.stringify({ error: 'Static asset binding not configured. Check wrangler.toml.' }), {
+        status: 500,
+        headers: jsonHeaders()
+      });
+    }
+
+    const response = await env.ASSETS.fetch(request);
+    if (response.status === 404 && !url.pathname.startsWith('/api/')) {
+      return await env.ASSETS.fetch(new Request(new URL('/index.html', request.url), request));
+    }
+
+    return response;
   }
 };
 
