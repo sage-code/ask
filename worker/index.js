@@ -6,7 +6,7 @@ export default {
         return await handleApi(request, url, env);
       }
 
-      const assetHandler = env.__STATIC_CONTENT || globalThis.__STATIC_CONTENT;
+      const assetHandler = env?.__STATIC_CONTENT || globalThis?.__STATIC_CONTENT || (typeof __STATIC_CONTENT !== 'undefined' ? __STATIC_CONTENT : undefined);
       if (assetHandler?.fetch) {
         try {
           const response = await assetHandler.fetch(request);
@@ -20,7 +20,14 @@ export default {
         }
       }
 
-      return new Response(JSON.stringify({ error: 'Static content not bound. Check your wrangler site configuration.' }), { status: 500, headers: jsonHeaders() });
+      return new Response(JSON.stringify({
+        error: 'Static content not bound. Check your wrangler site configuration.',
+        bindings: {
+          env___STATIC_CONTENT: Boolean(env?.__STATIC_CONTENT),
+          globalThis___STATIC_CONTENT: Boolean(globalThis?.__STATIC_CONTENT),
+          topLevel___STATIC_CONTENT: typeof __STATIC_CONTENT !== 'undefined'
+        }
+      }), { status: 500, headers: jsonHeaders() });
     } catch (error) {
       return new Response(JSON.stringify({ error: 'Worker error', details: error.message }), { status: 500, headers: jsonHeaders() });
     }
