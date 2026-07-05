@@ -22,7 +22,7 @@
       quiz = await response.json();
       shareUrl = `${window.location.origin}?quiz=${quiz.slug}`;
       resetState();
-    } catch (error) {
+    } catch (_error) {
       message = 'Unable to load quiz data. Please refresh or try another quiz.';
       quiz = null;
     }
@@ -113,7 +113,7 @@
       if (!response.ok) return;
       const data = await response.json();
       results = data.results || null;
-    } catch (_) {
+    } catch (_error) {
       results = null;
     }
   }
@@ -129,7 +129,7 @@
 </script>
 
 <style>
-  body {
+  :global(body) {
     margin: 0;
     font-family: system-ui, sans-serif;
     background: #0f172a;
@@ -197,16 +197,16 @@
       <h2>Register</h2>
       <form on:submit={register}>
         <div class="field">
-          <label>Name</label>
-          <input type="text" bind:value={name} placeholder="Your full name" />
+          <label for="name">Name</label>
+          <input id="name" type="text" bind:value={name} placeholder="Your full name" />
         </div>
         <div class="field">
-          <label>Email</label>
-          <input type="email" bind:value={email} placeholder="you@example.com" />
+          <label for="email">Email</label>
+          <input id="email" type="email" bind:value={email} placeholder="you@example.com" />
         </div>
         <div class="field">
-          <label>Role</label>
-          <select bind:value={role}>
+          <label for="role">Role</label>
+          <select id="role" bind:value={role}>
             <option value="student">Student</option>
             <option value="mentor">Mentor</option>
           </select>
@@ -237,15 +237,16 @@
           <p>{quiz.questions[current].text}</p>
 
           {#each quiz.questions[current].options as option, index}
-            <div
+            <button
+              type="button"
               class="option {selected === index ? 'selected' : ''}"
               on:click={() => { selected = index; message = '' }}
             >
               {option}
-            </div>
+            </button>
           {/each}
 
-          <button on:click={submitAnswer} disabled={loading}>Continue</button>
+          <button type="button" on:click={submitAnswer} disabled={loading}>Continue</button>
         </div>
       {:else}
         <div class="status">
